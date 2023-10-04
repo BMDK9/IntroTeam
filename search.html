@@ -11,7 +11,21 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
+        .d-flex>a { 
+            border-radius: 5px 0px 0px 5px;
+            padding: 5px;
+            
+            background-color: lightgray;
+        }
+        .search-icon {
+            width: 30px;
+            height: 30px;
+        }
 
+        .form-control {
+            width: 200px;
+            border-radius: 0px 5px 5px 0px;
+        }
     </style>
     <script type="module">
         // Firebase SDK 라이브러리 가져오기
@@ -84,6 +98,7 @@
 
 <body>
     <form class="d-flex" role="search">
+        <a><img class="search-icon" src="./image/search-icon.png"></a>
         <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     </form>
 </body>
