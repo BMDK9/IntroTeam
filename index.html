@@ -191,6 +191,8 @@
         .send {
             width: 100px;
             border: none;
+            border-radius: 5px;
+            ;
             margin-bottom: 10px;
             background-color: white;
         }
@@ -264,7 +266,6 @@
         import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-
         // Firebase 구성 정보 설정
         const firebaseConfig = {
             apiKey: "AIzaSyAzXX5j6y95F5-w-aemZc--QymtiWT_UVM",
@@ -300,7 +301,7 @@
                 location.href = 'yejinpage.html'; // 이예진님
             else
                 alert(`${searchWord} 에 대한 검색 결과를 찾을 수 없습니다.`);
-            } 
+        }
 
         let searchWord = '';
         $('#search').keydown(function (e) { // enter 눌렀을 때 검색어 가져와서 전달
@@ -310,17 +311,53 @@
             }
         })
 
-        $('#index').click(function(){
-            location.href =  'index.html';
+        $('#index').click(function () {
+            location.href = 'index.html';
         })
 
         $('#minah').click(function () {
             location.href = 'minahpage.html';
         })
 
-        $('#yejin').click(function(){
-            location.href =  'yejinpage.html';
+        $('#yejin').click(function () {
+            location.href = 'yejinpage.html';
         })
+
+        $('#sendbtn').click(async function () {
+            let number = document.querySelectorAll("input[type='checkbox']:checked").length;
+            alert('반영 완료!');
+            progressbar.style.width = ((number / 5) * 100) + "%";
+        });
+
+        /*
+        async function updateProgress() {
+            let docs = await getDocs(collection(db, "goals"));
+            let number;
+            docs.forEach((doc) => {
+                let row = doc.data();
+                number = row['num'];
+                console.log(number);
+            });
+            progressbar.style.width = ((number / 5) * 100) + "%";
+        }
+
+        $('#sendbtn').click(async function () {
+            let number = $("input:checkbox[name='goal']:checked").length;
+
+            let doc = {
+                'num': number
+            };
+
+            await addDoc(collection(db, "goals"), doc);
+            alert('반영 완료!');
+            await updateProgress();
+            window.location.reload();
+        });
+
+        (async function () {
+            await updateProgress(); // 초기 로딩 시 progress 업데이트
+        })();
+        */
 
     </script>
 </head>
@@ -335,12 +372,11 @@
                 <div class="search-box">
                     <form class="d-flex search-form" role="search">
                         <a><img class="search-icon" src="./image/search-icon.png"></a>
-                        <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input id="search" class="form-control me-2" type="search" placeholder="Search"
+                            aria-label="Search">
                     </form>
                 </div>
-    
-    
-    
+
             </div>
             <div class="box2">
                 <p class="mood" style="font-size: 15px;">TODAY is 행복🎃</p>
@@ -386,16 +422,17 @@
                     <hr>
                     <div class="goals">
                         <div class="checkbox">
-                            <input type="checkbox" name="goal" value="goal1">&nbsp;개인 페이지 완성<br>
-                            <input type="checkbox" name="goal" value="goal2">&nbsp;메인 페이지 완성<br>
-                            <input type="checkbox" name="goal" value="goal3">&nbsp;달성도를 상태바에 반영<br>
-                            <input type="checkbox" name="goal" value="goal4">&nbsp;검색창 이용<br>
-                            <input type="checkbox" name="goal" value="goal5">&nbsp;방명록 완성<br>
+                            <input type="checkbox" name="goal" value="1">&nbsp;개인 페이지 완성<br>
+                            <input type="checkbox" name="goal" value="1">&nbsp;메인 페이지 완성<br>
+                            <input type="checkbox" name="goal" value="1">&nbsp;달성도를 상태바에 반영<br>
+                            <input type="checkbox" name="goal" value="1">&nbsp;검색창 이용<br>
+                            <input type="checkbox" name="goal" value="1">&nbsp;방명록 완성<br>
                         </div>
                         <div class="btn_ach">
-                            <button class="send">반영하기</button><br>
+                            <button id="sendbtn" class="send">반영하기</button><br>
                             <div class="progress" style="height: 10px;">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" id="progressbar" role="progressbar" style="width: 0%"
+                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
