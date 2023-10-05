@@ -195,7 +195,7 @@
 
         }
 
-        .buttons>.visit {
+        .buttons>.visitor {
             background-color: rgb(153, 153, 153);
         }
     </style>
@@ -294,26 +294,29 @@
             $('#logBox').append(temp)
         });
 
-        $("#member1").click(async function () {
-            location.href = 'sunghun.html';
-        });
-        $("#member2").click(async function () {
-            location.href = 'minsunpage.html';
-        });
-        $("#member3").click(async function () {
-            location.href = 'minahpage.html';
-        });
-        $("#member4").click(async function () {
-            location.href = 'yejinpage.html';
-        });
-        $("#home").click(async function () {
+        $('#index').click(function () {
             location.href = 'index.html';
-        });
+        })
+
+        $('#sunghun').click(function () {
+            location.href = 'sunghun.html';
+        })
+
+        $('#minsun').click(function () {
+            location.href = 'minsunpage.html';
+        })
+
+        $('#minah').click(function () {
+            location.href = 'minahpage.html';
+        })
+
+        $('#yejin').click(function () {
+            location.href = 'yejinpage.html';
+        })
+
         $('#visitor').click(function () {
             location.href = 'visitorlog.html';
-        });
-
-
+        })
 
     </script>
 </head>
@@ -372,12 +375,12 @@
             </div>
         </div>
         <div class="buttons" style="position: absolute;">
-            <button id="home">홈</button>
-            <button id="member1">김성훈</button>
-            <button id="member2">김민선</button>
-            <button id="member3">유민아</button>
-            <button id="member4">이예진</button>
-            <button id="visitor">방명록</button>
+            <button id="index" class="index">홈</button>
+                <button id="sunghun" class="sunghun">김성훈</button>
+                <button id="minsun" class="minsun">김민선</button>
+                <button id="minah" class="minah">유민아</button>
+                <button id="yejin" class="yejin">이예진</button>
+                <button id="visitor" class="visitor">방명록</button>
         </div>
     </div>
 
