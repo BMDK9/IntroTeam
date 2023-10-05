@@ -91,20 +91,22 @@
     // Firebase SDK 라이브러리 가져오기
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
     import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { doc, onSnapshot, collection, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
     import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+    //import { doc, onSnapshot } from "firebase/firestore";
 
 
     // Firebase 구성 정보 설정
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-      apiKey: "AIzaSyAdIl_U6W_Kteqn9DjSkvWn3psi7Rg99P8",
-      authDomain: "spparrta.firebaseapp.com",
-      projectId: "spparrta",
-      storageBucket: "spparrta.appspot.com",
-      messagingSenderId: "433129692805",
-      appId: "1:433129692805:web:740ff9452040f5e2f6d3ec",
-      measurementId: "G-ZYJX3T384M"
+      apiKey: "AIzaSyAzXX5j6y95F5-w-aemZc--QymtiWT_UVM",
+      authDomain: "intro-team-42d34.firebaseapp.com",
+      projectId: "intro-team-42d34",
+      storageBucket: "intro-team-42d34.appspot.com",
+      messagingSenderId: "367458824490",
+      appId: "1:367458824490:web:b05f0947f7149006206e53",
+      measurementId: "G-0488K83Q4K"
     };
 
 
@@ -112,25 +114,86 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    //달성도
-    $(".올리기").click(async function () {
 
-      let boxes = document.querySelectorAll("input[type='checkbox']:checked");
+
+    async function dataUpdate() {
+      let boxes = $("input[type='checkbox']:checked");
+      //console.log('boxes: ', boxes);
       let 체크됨 = boxes.length;
+      //console.log(체크됨);
 
-      let 올리기 = { '체크됨': 체크됨 };
-      await addDoc(collection(db, "달성도값"), 올리기);
-      window.location.reload();
+      let getId = $('#update').on('click', '.checkbox', function () {
+        let boxId = $(this).attr('id');
+      })
+
+      let 올리기 = {
+        'main': $(`#메인`).is(':checked'),
+        'search': $(`#검색`).is(':checked'),
+        'achievement': $(`#달성도`).is(':checked'),
+        'visitorBook': $(`#방명록`).is(':checked'),
+
+        'member1': $(`#김민선`).is(':checked'),
+        'member2': $(`#김성훈`).is(':checked'),
+        'member3': $(`#유민아`).is(':checked'),
+        'member4': $(`#이예진`).is(':checked'),
+
+        'count': 체크됨
+      };
+      console.log($(`#이예진`).is(':checked'))
+      
+      let 가져오기 = await getDocs(collection(db, "달성도값"));
+      가져오기.forEach(async (data) => {
+        console.log(data.id, 올리기);
+        await updateDoc(doc(db, "달성도값", data.id), 올리기);
+        window.location.reload();
+      })
+    }
+
+    //달성도
+    $('#update').click(async function () {
+      dataUpdate();
     });
-    
-    import { doc, onSnapshot } from "firebase/firestore";
 
-      let 가져오기 = onSnapshot(doc(db, "달성도값"), (doc) => {
-      console.log("Current data: ", doc.data());
-    });
-    let 임시 = `<progress class="status" value="${달성률}" max="8"></progress>`;
+    $(document).ready(async function () {
+      let 가져오기 = await getDocs(collection(db, "달성도값"));
+      let 임시;
+      가져오기.forEach((doc) => {
+        console.log("Current data: ", doc.data());
+        let 달성률 = 0;
+        let goal = doc.data();
+        
+        let main = goal['main'];
+        let search = goal['search'];
+        let achievement = goal['achievement'];
+        let visitorBook = goal['visitorBook'];
 
-    $('#status').append(임시);
+        let member1 = goal['member1'];
+        let member2 = goal['member2'];
+        let member3 = goal['member3'];
+        let member4 = goal['member4'];
+
+        let count = goal['count'];
+        
+
+
+        $('#메인').prop("checked", main);
+        $('#검색').prop("checked", search);
+        $('#달성도').prop("checked", achievement);
+        $('#방명록').prop("checked", visitorBook);
+
+        $('#김민선').prop("checked", member1);
+        $('#김성훈').prop("checked", member2);
+        $('#유민아').prop("checked", member3);
+        $('#이예진').prop("checked", member4);
+
+
+        임시 = `<progress class="status" value="${count}" max="8"></progress>`;
+      });
+
+      $('#btn_ach').append(임시);
+    })
+
+
 
   </script>
 
@@ -142,24 +205,24 @@
     <div class="부분">
       <div class="메인페이지" style="margin-right: 5%;">
         <form style="font-size: 20px;">
-          <input id="메인" type="checkbox" style="margin-left: 2.5%;">메인페이지
+          <input class="checkbox" id="메인" type="checkbox" style="margin-left: 2.5%;">메인페이지
         </form>
       </div>
 
       <div class="검색기능" style="margin-right: 5%;">
         <form style="font-size: 20px;">
-          <input id="검색" type="checkbox" style="margin-left: 2.5%;">검색기능
+          <input class="checkbox" id="검색" type="checkbox" style="margin-left: 2.5%;">검색기능
         </form>
       </div>
       <div class="달성도기능" style="margin-right: 5%;">
         <form style="font-size: 20px;">
-          <input id="달성도" type="checkbox" style="margin-left: 2.5%;">달성도기능
+          <input class="checkbox" id="달성도" type="checkbox" style="margin-left: 2.5%;">달성도기능
         </form>
       </div>
 
       <div class="방명록기능">
         <form style="font-size: 20px;">
-          <input id="방명록" type="checkbox" style="margin-left: 2.5%;">방명록기능
+          <input class="checkbox" id="방명록" type="checkbox" style="margin-left: 2.5%;">방명록기능
         </form>
       </div>
     </div>
@@ -167,15 +230,15 @@
     <div class="개인페이지">
       <h4>개인 페이지</h4>
       <form class="이름" style="font-size: 20px;">
-        <input id="김민선" type="checkbox">김민선
-        <input id="김성훈" type="checkbox" style="margin-left: 10%;">김성훈
-        <input id="유민아" type="checkbox" style="margin-left: 10%;">유민아
-        <input id="이에진" type="checkbox" style="margin-left: 10%;">이예진
+        <input class="checkbox" id="김민선" type="checkbox">김민선
+        <input class="checkbox" id="김성훈" type="checkbox" style="margin-left: 10%;">김성훈
+        <input class="checkbox" id="유민아" type="checkbox" style="margin-left: 10%;">유민아
+        <input class="checkbox" id="이예진" type="checkbox" style="margin-left: 10%;">이예진
       </form>
     </div>
-    <div class="btn_ach">
-      <button class="올리기">반영하기</button><br>
-      <progress id="status"></progress>
+    <div class="btn_ach" id="btn_ach">
+      <button class="올리기" id="update">반영하기</button><br>
+      <!-- <progress id="status"></progress> -->
     </div>
 
 
