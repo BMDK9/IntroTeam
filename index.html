@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인페이지</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
@@ -32,7 +33,8 @@
         }
 
         .uppertext {
-            width: 800px;
+            width: 930px;
+            /* 검색부분으로 인해 800 -> 930 으로 변경했습니다 */
             height: 30px;
             margin-top: -40px;
         }
@@ -47,7 +49,7 @@
 
         .text2 {
             margin-left: 60px;
-            color: #2980C9;       
+            color: #2980C9;
         }
 
         .text3 {
@@ -206,7 +208,103 @@
             border-radius: 5px;
             justify-content: center;
         }
+
+
+
+
+        .search-box {
+            display: inline-block;
+            position: absolute;
+            right: 0;
+        }
+
+        .search-form>a {
+            border-radius: 5px 0px 0px 5px;
+            padding: 7px;
+
+            background-color: lightgray;
+        }
+
+        .search-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .form-control {
+            border-radius: 0px 5px 5px 0px;
+        }
     </style>
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+        // Firebase 구성 정보 설정
+        const firebaseConfig = {
+            apiKey: "AIzaSyAzXX5j6y95F5-w-aemZc--QymtiWT_UVM",
+            authDomain: "intro-team-42d34.firebaseapp.com",
+            projectId: "intro-team-42d34",
+            storageBucket: "intro-team-42d34.appspot.com",
+            messagingSenderId: "367458824490",
+            appId: "1:367458824490:web:b05f0947f7149006206e53",
+            measurementId: "G-0488K83Q4K"
+        };
+
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+
+
+
+
+
+        async function getSearchResult() { // db에 검색결과가 있는지 확인하여 그에 따른 결과를 보여주는 함수
+            searchWord = $('#search').val();
+
+            let searchData = await getDocs(
+                query(
+                    collection(db, "member"),
+                    where('name', '==', searchWord))
+            );
+
+            if (searchData.empty) {
+                alert(`${searchWord} 에 대한 검색 결과를 찾을 수 없습니다.`);
+            } else {
+                searchData.forEach((data) => {
+                    let result = data.data();
+                    let memberId = data.id;
+
+                    if (memberId == 0)
+                        location.href = '0.html'; // 김성훈님
+                    if (memberId == 1)
+                        location.href = '1.html'; // 김민선님
+                    if (memberId == 2)
+                        location.href = 'minahpage.html'; // 유민아
+                    if (memberId == 3)
+                        location.href = '3.html'; // 이예진님
+                })
+            }
+        }
+
+        let searchWord = '';
+        $('#search').keydown(function (e) { // enter 눌렀을 때 검색어 가져와서 전달
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                getSearchResult();
+            }
+        })
+
+        $('#minah').click(function () {
+            location.href = 'minahpage.html';
+        })
+
+    </script>
 </head>
 
 <body>
@@ -215,6 +313,15 @@
             <p class="text1" style="display:inline">TODAY <span class="red">2002</span> | TOTAL 118</p>
             <p class="text2" style="display:inline; font-size: 30px; font-weight: 600;">I-world</p>
             <p class="text3" style="display:inline">참고: https://www.cyworld.com</p>
+            <div class="search-box">
+                <form class="d-flex search-form" role="search">
+                    <a><img class="search-icon" src="./image/search-icon.png"></a>
+                    <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                </form>
+            </div>
+
+
+
         </div>
         <div class="box2">
             <p class="mood" style="font-size: 15px;">TODAY is 행복🎃</p>
@@ -283,7 +390,7 @@
             <button>홈</button>
             <button>김성훈</button>
             <button>김민선</button>
-            <button>유민아</button>
+            <button id="minah" class="minah">유민아</button>
             <button>이예진</button>
             <button>방명록</button>
         </div>
