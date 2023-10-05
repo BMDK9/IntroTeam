@@ -72,7 +72,9 @@
         .myimage {
             width: 160px;
             height: 160px;
-            background-color: aquamarine;
+            background-image: url(image/logo.jpg);
+            background-position: center;
+            background-size: cover;
 
             margin: 0px auto 15px auto;
         }
@@ -192,6 +194,10 @@
             text-align: left;
 
         }
+
+        .buttons>.visit {
+            background-color: rgb(153, 153, 153);
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module">
@@ -252,9 +258,9 @@
             console.log("click");
 
             let parent = $(this).closest('div');
-            
+
             let child = parent.children('div');
-            let val = child.attr( 'content' );
+            let val = child.attr('content');
             console.log(val);
             parent.remove();
 
@@ -285,7 +291,8 @@
     </div>
     `;
 
-            $('#logBox').append(temp)});
+            $('#logBox').append(temp)
+        });
 
         $("#member1").click(async function () {
             location.href = 'sunghun.html';
