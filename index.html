@@ -253,6 +253,10 @@
         .form-control {
             border-radius: 0px 5px 5px 0px;
         }
+
+        .buttons>.index {
+            background-color: rgb(153, 153, 153);
+        }
     </style>
     <script type="module">
         // Firebase SDK 라이브러리 가져오기
@@ -309,6 +313,10 @@
 
         $('#minah').click(function () {
             location.href = 'minahpage.html';
+        })
+
+        $('#yejin').click(function(){
+            location.href =  'yejinpage.html';
         })
 
     </script>
@@ -396,11 +404,11 @@
                 </div>
             </div>
             <div class="buttons" style="position: absolute;">
-                <button>홈</button>
+                <button id="index" class="index">홈</button>
                 <button>김성훈</button>
                 <button>김민선</button>
                 <button id="minah" class="minah">유민아</button>
-                <button>이예진</button>
+                <button id="yejin" class="yejin">이예진</button>
                 <button>방명록</button>
             </div>
         </div>
