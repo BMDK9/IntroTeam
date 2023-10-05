@@ -258,9 +258,9 @@
             console.log("click");
 
             let parent = $(this).closest('div');
-            
+
             let child = parent.children('div');
-            let val = child.attr( 'content' );
+            let val = child.attr('content');
             console.log(val);
             parent.remove();
 
@@ -291,23 +291,28 @@
     </div>
     `;
 
-            $('#logBox').append(temp)});
+            $('#logBox').append(temp)
+        });
 
         $("#member1").click(async function () {
-            location.href = '0.html';
+            location.href = 'sunghun.html';
         });
         $("#member2").click(async function () {
-            location.href = '1.html';
+            location.href = 'minsunpage.html';
         });
         $("#member3").click(async function () {
-            location.href = '2.html';
+            location.href = 'minahpage.html';
         });
         $("#member4").click(async function () {
-            location.href = '3.html';
+            location.href = 'yejinpage.html';
         });
         $("#home").click(async function () {
             location.href = 'index.html';
         });
+        $('#visitor').click(function () {
+            location.href = 'visitorlog.html';
+        });
+
 
 
     </script>
@@ -372,7 +377,7 @@
             <button id="member2">김민선</button>
             <button id="member3">유민아</button>
             <button id="member4">이예진</button>
-            <button class="visit">방명록</button>
+            <button id="visitor">방명록</button>
         </div>
     </div>
 
