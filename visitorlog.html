@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Single+Day&display=swap');
+
+        * {
+            font-family: 'Pixelify Sans', cursive;
+            font-family: 'Single Day', cursive;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        .box1 {
+            width: 1000px;
+            height: 600px;
+            background-color: #E0E0E0;
+
+            margin: 100px auto 0px auto;
+
+            padding-top: 65px;
+            padding-left: 35px;
+            display: flex;
+        }
+
+        .uppertext {
+            width: 800px;
+            height: 30px;
+            margin-top: -40px;
+        }
+
+        .text1 {
+            margin-left: 25px;
+        }
+
+        .red {
+            color: #D60A0A;
+        }
+
+        .text2 {
+            margin-left: 60px;
+            color: #2980C9;
+            ;
+        }
+
+        .text3 {
+            margin-left: 40px;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 500px;
+            background-color: white;
+            border: 1px solid black;
+            margin-right: 30px;
+        }
+
+        .mood {
+            width: 160px;
+            height: 25px;
+            margin: 10px auto 0px auto;
+        }
+
+        .myimage {
+            width: 160px;
+            height: 160px;
+            background-color: aquamarine;
+
+            margin: 0px auto 15px auto;
+        }
+
+        .introduce {
+            width: 160px;
+            height: 25px;
+            margin: 25px auto 0px auto;
+        }
+
+        .rings {
+            margin-left: 190px;
+            margin-top: 40px;
+        }
+
+        .set1 {
+            margin-bottom: 200px;
+        }
+
+        .ring {
+            width: 50px;
+            height: 15px;
+            background-color: #BEBEBE;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .box3 {
+            width: 700px;
+            height: 500px;
+            background-color: white;
+            border: 1px solid black;
+
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .title {
+            color: #2980C9;
+        }
+
+        .box4 {
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            justify-content: center;
+        }
+
+        hr {
+            margin-bottom: 5px;
+        }
+
+        .box5 {
+            width: 330px;
+            height: 120px;
+            text-align: left;
+            margin: 20px 20px 0px 20px;
+        }
+
+        .box6 {
+            width: 660px;
+            height: 380px;
+            text-align: left;
+            margin: 20px 20px 0px 20px;
+            background-color: green;
+        }
+
+        .box7 {
+            width: 660px;
+            height: 200px;
+            text-align: left;
+            margin: 20px 20px 0px 20px;
+        }
+
+        .buttons {
+            width: 100px;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+
+            margin-left: 930px;
+        }
+
+        .buttons>button {
+            width: 100px;
+            height: 50px;
+            background-color: #5E5E5E;
+            color: white;
+
+            margin-bottom: 20px;
+
+            border: none;
+            border-radius: 5px;
+            justify-content: center;
+        }
+
+        .inputlogBox {
+            background-color: lightgray;
+            padding: 20px;
+        }
+
+        .logBox {
+            height: 700px;
+            overflow: auto;
+            padding: 20px;
+
+        }
+
+        .log {
+            width: auto;
+        }
+
+        .logText {
+            width: 100%;
+            text-align: left;
+
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAzXX5j6y95F5-w-aemZc--QymtiWT_UVM",
+            authDomain: "intro-team-42d34.firebaseapp.com",
+            projectId: "intro-team-42d34",
+            storageBucket: "intro-team-42d34.appspot.com",
+            messagingSenderId: "367458824490",
+            appId: "1:367458824490:web:cfeed0e953eab5a2206e53",
+            measurementId: "G-Y60R200KGX"
+        };
+
+        // Initialize Firebase
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+        $("#logRegisterBtn").click(async function () {
+
+            let name = $('#logName').val();
+            let pw = $('#logPassword').val();
+            let content = $('#logContent').val();
+            const today = new Date();
+            let day = today.getDate();
+            let month = today.getMonth() + 1;
+            let year = today.getFullYear();
+
+            // This arrangement can be altered based on how we want the date's format to appear.
+            let date = `${year}-${month}-${day}`;
+
+            let doc = {
+                'name': name,
+                'pw': pw,
+                'content': content,
+                'date': date
+            }
+            await addDoc(collection(db, "logs"), doc);
+            window.location.reload();
+        });
+
+
+
+
+        $(document).on("click", "#deleteLogBtn", function () {
+
+            console.log("click");
+
+            let parent = $(this).closest('div');
+            
+            let child = parent.children('div');
+            let val = child.attr( 'content' );
+            console.log(val);
+            parent.remove();
+
+        });
+
+
+        let docs = await getDocs(collection(db, "logs"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            console.log(row);
+
+            let name = row['name'];
+            let pw = row['pw'];
+            let content = row['content'];
+            let date = row['date']
+
+            let temp = `
+    <div class="log">
+        <div class="input-group mb-3">
+            <span class="input-group-text">${date}</span>
+            <span class="input-group-text">${name}</span>
+            <span><input type="text" id="deleteLogPw" placeholder="Password" aria-label="Password" class="form-control"></span>
+            <button class="btn btn-secondary" type="button" id="deleteLogBtn">삭제</button>
+            <div class="logText" content = ${content}>
+                ${content}
+            </div>
+        </div>
+    </div>
+    `;
+
+            $('#logBox').append(temp)});
+
+        $("#member1").click(async function () {
+            location.href = '0.html';
+        });
+        $("#member2").click(async function () {
+            location.href = '1.html';
+        });
+        $("#member3").click(async function () {
+            location.href = '2.html';
+        });
+        $("#member4").click(async function () {
+            location.href = '3.html';
+        });
+        $("#home").click(async function () {
+            location.href = 'index.html';
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <div class="box1" style="position:relative;">
+        <div class="uppertext" style="position: absolute;">
+            <p class="text1" style="display:inline">TODAY <span class="red">2002</span> | TOTAL 118</p>
+            <p class="text2" style="display:inline; font-size: 30px; font-weight: 600;">I-world</p>
+            <p class="text3" style="display:inline">참고: https://www.cyworld.com</p>
+        </div>
+        <div class="box2">
+            <p class="mood" style="font-size: 15px;">TODAY is 행복🎃</p>
+            <div class="myimage">
+
+            </div>
+            <div class="introduce">
+                <p style="font-size: 14px;">팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개</p>
+            </div>
+        </div>
+        <div class="rings" style="position: absolute;">
+            <div class="set1">
+                <div class="ring">
+                </div>
+                <div class="ring">
+                </div>
+            </div>
+            <div class="set2">
+                <div class="ring">
+                </div>
+                <div class="ring">
+                </div>
+            </div>
+        </div>
+        <div class="box3">
+            <div class="inputlogBox">
+                <div class="input-group">
+                    <span class="input-group-text">Name</span>
+                    <input type="text" id="logName" placeholder="Name" aria-label="Name" class="form-control">
+                    <span class="input-group-text">Password</span>
+                    <input type="text" id="logPassword" placeholder="Password" aria-label="Password"
+                        class="form-control">
+                </div>
+
+                <textarea class="form-control" id="logContent" rows="3"></textarea>
+
+                <div>
+                    <button type="button" id="logRegisterBtn" class="btn btn-secondary" style="float:right">등록</button>
+                </div>
+
+            </div>
+            <div class="logBox">
+                <div class="log" id="logBox">
+
+                </div>
+            </div>
+        </div>
+        <div class="buttons" style="position: absolute;">
+            <button id="home">홈</button>
+            <button id="member1">김성훈</button>
+            <button id="member2">김민선</button>
+            <button id="member3">유민아</button>
+            <button id="member4">이예진</button>
+            <button>방명록</button>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
