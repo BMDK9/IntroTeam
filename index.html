@@ -33,7 +33,8 @@
         }
 
         .uppertext {
-            width: 930px; /* 검색부분으로 인해 800 -> 930 으로 변경했습니다 */
+            width: 930px;
+            /* 검색부분으로 인해 800 -> 930 으로 변경했습니다 */
             height: 30px;
             margin-top: -40px;
         }
@@ -49,7 +50,6 @@
         .text2 {
             margin-left: 60px;
             color: #2980C9;
-            ;
         }
 
         .text3 {
@@ -140,14 +140,51 @@
             height: 380px;
             text-align: left;
             margin: 20px 20px 0px 20px;
-            background-color: green;
+        }
+
+        .goals {
+            height: 200px;
+            background-image: url('');
+            background-position: center;
+            background-size: cover;
+
+            background-color: aquamarine;
+
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+
+            margin-bottom: 10px;
+        }
+
+        .checkbox {
+            margin-left: 40px;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .btn_ach {
+            width: 200px;
+            margin: auto auto 0px auto;
+        }
+
+        .send {
+            width: fit-content;
+            border: none;
+            margin-bottom: 5px;
+        }
+
+        .status {
+            width: 160px;
+            margin-bottom: 5px;
         }
 
         .box7 {
             width: 660px;
             height: 200px;
             text-align: left;
-            margin: 20px 20px 0px 20px;
+            margin: 0px 20px 0px 20px;
         }
 
         .buttons {
@@ -263,10 +300,9 @@
             }
         })
 
-        $('#minah').click(function() {
+        $('#minah').click(function () {
             location.href = 'minahpage.html';
-            console.log("go");
-        }) 
+        })
 
     </script>
 </head>
@@ -330,8 +366,18 @@
             <div class="box6">
                 <h4 class="title">Our Goals</h4>
                 <hr>
-                <div>
-
+                <div class="goals">
+                    <div class="checkbox">
+                        <input type="checkbox" name="goal" value="goal1">&nbsp;목표1<br>
+                        <input type="checkbox" name="goal" value="goal2">&nbsp;목표2<br>
+                        <input type="checkbox" name="goal" value="goal3">&nbsp;목표3<br>
+                        <input type="checkbox" name="goal" value="goal4">&nbsp;목표4<br>
+                        <input type="checkbox" name="goal" value="goal5">&nbsp;목표5<br>
+                    </div>
+                    <div class="btn_ach">
+                        <button class="send">반영하기</button><br>
+                        <progress class="status" value="20" max="100"></progress>
+                    </div>
                 </div>
             </div>
             <div class="box7">
