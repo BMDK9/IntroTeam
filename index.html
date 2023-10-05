@@ -265,6 +265,7 @@
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
         // Firebase 구성 정보 설정
         const firebaseConfig = {
@@ -323,42 +324,74 @@
             location.href = 'yejinpage.html';
         })
 
+        /*
         $('#sendbtn').click(async function () {
             let number = document.querySelectorAll("input[type='checkbox']:checked").length;
             alert('반영 완료!');
             progressbar.style.width = ((number / 5) * 100) + "%";
         });
-
-        /*
-        async function updateProgress() {
-            let docs = await getDocs(collection(db, "goals"));
-            let number;
-            docs.forEach((doc) => {
-                let row = doc.data();
-                number = row['num'];
-                console.log(number);
-            });
-            progressbar.style.width = ((number / 5) * 100) + "%";
-        }
-
-        $('#sendbtn').click(async function () {
-            let number = $("input:checkbox[name='goal']:checked").length;
-
-            let doc = {
-                'num': number
-            };
-
-            await addDoc(collection(db, "goals"), doc);
-            alert('반영 완료!');
-            await updateProgress();
-            window.location.reload();
-        });
-
-        (async function () {
-            await updateProgress(); // 초기 로딩 시 progress 업데이트
-        })();
         */
 
+        async function dataUpdate() {
+            console.log('버튼함수');
+            let boxes = $("input[type='checkbox']:checked");
+            let 체크됨 = boxes.length;
+
+            let getId = $('#sendbtn').on('click', '.checkbox', function () {
+                let boxId = $(this).attr('id');
+            })
+
+            let 올리기 = {
+                'goal1': $('#goal1').is(':checked'),
+                'goal2': $('#goal2').is(':checked'),
+                'goal3': $('#goal3').is(':checked'),
+                'goal4': $('#goal4').is(':checked'),
+                'goal5': $('#goal5').is(':checked'),
+                'count': 체크됨
+            };
+
+            let 가져오기 = await getDocs(collection(db, "달성도값"));
+            가져오기.forEach(async (data) => {
+                await updateDoc(doc(db, "달성도값", data.id), 올리기);
+                window.location.reload();
+            })
+        }
+
+        //달성도
+        $('#sendbtn').click(async function () {
+            dataUpdate();
+        });
+
+        $(document).ready(async function () {
+            let 가져오기 = await getDocs(collection(db, "달성도값"));
+            let 임시;
+            가져오기.forEach((doc) => {
+                let 달성률 = 0;
+                let goal = doc.data();
+
+                let goal1 = goal['goal1'];
+                let goal2 = goal['goal2'];
+                let goal3 = goal['goal3'];
+                let goal4 = goal['goal4'];
+                let goal5 = goal['goal5'];
+                let count = goal['count'];
+
+                $('#goal1').prop("checked", goal1);
+                $('#goal2').prop("checked", goal2);
+                $('#goal3').prop("checked", goal3);
+                $('#goal4').prop("checked", goal4);
+                $('#goal5').prop("checked", goal5);
+
+                progressbar.style.width = ((count / 5) * 100) + "%";
+
+                /*
+                임시 = `<div class="progress" style="height: 10px;">
+                                <div class="progress-bar" id="progressbar" role="progressbar" style="width: ${count}/5*100%"
+                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>`
+                */
+            });
+        })
     </script>
 </head>
 
@@ -422,11 +455,11 @@
                     <hr>
                     <div class="goals">
                         <div class="checkbox">
-                            <input type="checkbox" name="goal" value="1">&nbsp;개인 페이지 완성<br>
-                            <input type="checkbox" name="goal" value="1">&nbsp;메인 페이지 완성<br>
-                            <input type="checkbox" name="goal" value="1">&nbsp;달성도를 상태바에 반영<br>
-                            <input type="checkbox" name="goal" value="1">&nbsp;검색창 이용<br>
-                            <input type="checkbox" name="goal" value="1">&nbsp;방명록 완성<br>
+                            <input type="checkbox" id="goal1" name="goal" value="1">&nbsp;개인 페이지 완성<br>
+                            <input type="checkbox" id="goal2" name="goal" value="1">&nbsp;메인 페이지 완성<br>
+                            <input type="checkbox" id="goal3" name="goal" value="1">&nbsp;달성도를 상태바에 반영<br>
+                            <input type="checkbox" id="goal4" name="goal" value="1">&nbsp;검색창 이용<br>
+                            <input type="checkbox" id="goal5" name="goal" value="1">&nbsp;방명록 완성<br>
                         </div>
                         <div class="btn_ach">
                             <button id="sendbtn" class="send">반영하기</button><br>
@@ -434,6 +467,7 @@
                                 <div class="progress-bar" id="progressbar" role="progressbar" style="width: 0%"
                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
