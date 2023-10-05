@@ -195,7 +195,7 @@
 
         }
 
-        .buttons>.visit {
+        .buttons>#visitor {
             background-color: rgb(153, 153, 153);
         }
     </style>
@@ -278,18 +278,18 @@
             let date = row['date']
 
             let temp = `
-    <div class="log">
-        <div class="input-group mb-3">
-            <span class="input-group-text">${date}</span>
-            <span class="input-group-text">${name}</span>
-            <span><input type="text" id="deleteLogPw" placeholder="Password" aria-label="Password" class="form-control"></span>
-            <button class="btn btn-secondary" type="button" id="deleteLogBtn">삭제</button>
-            <div class="logText" content = ${content}>
-                ${content}
+            <div class="log">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">${date}</span>
+                    <span class="input-group-text">${name}</span>
+                    <span><input type="text" id="deleteLogPw" placeholder="Password" aria-label="Password" class="form-control"></span>
+                    <button class="btn btn-secondary" type="button" id="deleteLogBtn">삭제</button>
+                    <div class="logText" content = ${content}>
+                        ${content}
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    `;
+            `;
 
             $('#logBox').append(temp)
         });

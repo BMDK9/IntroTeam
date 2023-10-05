@@ -28,7 +28,6 @@
             measurementId: "G-0488K83Q4K"
         };
 
-
         // Firebase 인스턴스 초기화
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
@@ -36,8 +35,11 @@
 
 
 
+        let searchWord = '';
+        let dataPackage = await getDocs(collection(db, "goals")); // 데이터 가져오기
 
 
+        
 
         async function getSearchResult() { // 검색 결과 보여주는 함수
             searchWord = $('#search').val();
@@ -53,40 +55,16 @@
             else
                 alert(`${searchWord} 에 대한 검색 결과를 찾을 수 없습니다.`);
         }
-
-        let searchWord = '';
+ 
         $('#search').keydown(function (e) { // enter 눌렀을 때 검색어 가져와서 전달
             if (e.keyCode == 13) {
                 e.preventDefault();
                 getSearchResult();
             }
         })
-        //사이드태그
-        $('#index').click(function () {
-            location.href = 'index.html';
-        }) //메인
 
-        $('#sunghun').click(function () {
-            location.href = 'sunghun.html';
-        }) //성훈
 
-        $('#minah').click(function () {
-            location.href = 'minahpage.html';
-        }) //민아
-
-        $('#yejin').click(function () {
-            location.href = 'yejinpage.html';
-        }) //예진
-
-        $('#visitor').click(function () {
-            location.href = 'visitorlog.html';
-        }) //방명록
-
-        $('#sunghun').click(function () {
-            location.href = 'sunghun.html';
-        })
-
-        async function dataUpdate() {
+        async function dataUpdate() { // 달성도 관련
             let boxes = $("input[type='checkbox']:checked");
             let checked = boxes.length;
 
@@ -104,7 +82,6 @@
                 'count': checked
             };
 
-            let dataPackage = await getDocs(collection(db, "goals"));
             dataPackage.forEach(async (data) => {
                 console.log(data.id, update);
                 await updateDoc(doc(db, "goals", data.id), update);
@@ -112,15 +89,13 @@
             })
         }
 
-        $('#sendbtn').click(async function () {
+        $('#sendbtn').click(async function () { // 반영하기 버튼 눌렀을 때
             dataUpdate();
         });
 
 
-        $(document).ready(async function () {
-            let getData = await getDocs(collection(db, "goals"));
-            let temp;
-            getData.forEach((doc) => {
+        $(document).ready(async function () { // 목표 관련
+            dataPackage.forEach((doc) => {
                 console.log("Current data: ", doc.data());
                 let goal = doc.data();
 
@@ -142,6 +117,28 @@
             });
 
         })
+
+
+        //사이드태그
+        $('#index').click(function () {
+            location.href = 'index.html';
+        }) //메인
+
+        $('#sunghun').click(function () {
+            location.href = 'sunghun.html';
+        }) //성훈
+
+        $('#minah').click(function () {
+            location.href = 'minahpage.html';
+        }) //민아
+
+        $('#yejin').click(function () {
+            location.href = 'yejinpage.html';
+        }) //예진
+
+        $('#visitor').click(function () {
+            location.href = 'visitorlog.html';
+        }) //방명록
 
     </script>
 </head>
@@ -242,7 +239,7 @@
             <div class="buttons" style="position: absolute;">
                 <button id="index" class="index">홈</button>
                 <button id="sunghun" class="sunghun">김성훈</button>
-                <button >김민선</button>
+                <button>김민선</button>
                 <button id="minah" class="minah">유민아</button>
                 <button id="yejin" class="yejin">이예진</button>
                 <button id="visitor" class="visitor">방명록</button>
