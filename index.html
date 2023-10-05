@@ -20,12 +20,26 @@
             background-color: white;
         }
 
+        .box0 {
+            width: 1100px;
+            height: 700px;
+            background-color: #A6A6A6;
+            background-image: url(image/yejin/—Pngtree—grid\ pattern.png);
+            background-blend-mode: multiply;
+
+            margin: 80px auto 0px auto;
+            border-radius: 10px;
+
+            display: flex;
+        }
+
         .box1 {
             width: 1000px;
             height: 600px;
             background-color: #E0E0E0;
 
-            margin: 100px auto 0px auto;
+            margin: 40px auto 0px auto;
+            border-radius: 10px;
 
             padding-top: 65px;
             padding-left: 35px;
@@ -72,16 +86,23 @@
 
         .myimage {
             width: 160px;
-            height: 160px;
-            background-color: aquamarine;
+            height: 140px;
+            background-image: url(image/logo.jpg);
+            background-position: center;
+            background-size: cover;
 
             margin: 0px auto 15px auto;
         }
 
         .introduce {
             width: 160px;
-            height: 25px;
-            margin: 25px auto 0px auto;
+            height: 150px;
+            margin: 0px auto 0px auto;
+
+            border: 2px double;
+            border-radius: 10px;
+
+            padding: 7px;
         }
 
         .rings {
@@ -144,9 +165,9 @@
 
         .goals {
             height: 200px;
-            background-image: url('');
+            background-image: url('image/miniroom.gif');
             background-position: center;
-            background-size: cover;
+            background-size: contain;
 
             background-color: aquamarine;
 
@@ -170,14 +191,16 @@
         }
 
         .send {
-            width: fit-content;
+            width: 100px;
             border: none;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            background-color: white;
         }
 
-        .status {
-            width: 160px;
-            margin-bottom: 5px;
+        .progress {
+            width: 200px;
+            margin-bottom: 10px;
+            background-color: white;
         }
 
         .box7 {
@@ -208,9 +231,6 @@
             border-radius: 5px;
             justify-content: center;
         }
-
-
-
 
         .search-box {
             display: inline-block;
@@ -308,94 +328,96 @@
 </head>
 
 <body>
-    <div class="box1" style="position:relative;">
-        <div class="uppertext" style="position: absolute;">
-            <p class="text1" style="display:inline">TODAY <span class="red">2002</span> | TOTAL 118</p>
-            <p class="text2" style="display:inline; font-size: 30px; font-weight: 600;">I-world</p>
-            <p class="text3" style="display:inline">참고: https://www.cyworld.com</p>
-            <div class="search-box">
-                <form class="d-flex search-form" role="search">
-                    <a><img class="search-icon" src="./image/search-icon.png"></a>
-                    <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                </form>
-            </div>
-
-
-
-        </div>
-        <div class="box2">
-            <p class="mood" style="font-size: 15px;">TODAY is 행복🎃</p>
-            <div class="myimage">
-                <img src="..." alt="">
-            </div>
-            <div class="introduce">
-                <p style="font-size: 14px;">팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개</p>
-            </div>
-        </div>
-        <div class="rings" style="position: absolute;">
-            <div class="set1">
-                <div class="ring">
+    <div class="box0">
+        <div class="box1" style="position:relative;">
+            <div class="uppertext" style="position: absolute;">
+                <p class="text1" style="display:inline">TODAY <span class="red">2002</span> | TOTAL 118</p>
+                <p class="text2" style="display:inline; font-size: 30px; font-weight: 600;">I-world</p>
+                <p class="text3" style="display:inline">참고: https://www.cyworld.com</p>
+                <div class="search-box">
+                    <form class="d-flex search-form" role="search">
+                        <a><img class="search-icon" src="./image/search-icon.png"></a>
+                        <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    </form>
                 </div>
-                <div class="ring">
+    
+    
+    
+            </div>
+            <div class="box2">
+                <p class="mood" style="font-size: 15px;">TODAY is 행복🎃</p>
+                <div class="myimage">
+                </div>
+                <div class="introduce">
+                    <p style="font-size: 14px;">팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개</p>
                 </div>
             </div>
-            <div class="set2">
-                <div class="ring">
-                </div>
-                <div class="ring">
-                </div>
-            </div>
-        </div>
-        <div class="box3">
-            <div class="box4">
-                <div class="box5">
-                    <h4 class="title">우리 팀만의 특징</h4>
-                    <hr>
-                    <li>특징</li>
-                    <li>특징</li>
-                    <li>특징</li>
-                </div>
-                <div class="box5">
-                    <h4 class="title">우리 팀만의 약속</h4>
-                    <hr>
-                    <li>약속</li>
-                    <li>약속</li>
-                    <li>약속</li>
-                </div>
-            </div>
-            <div class="box6">
-                <h4 class="title">Our Goals</h4>
-                <hr>
-                <div class="goals">
-                    <div class="checkbox">
-                        <input type="checkbox" name="goal" value="goal1">&nbsp;목표1<br>
-                        <input type="checkbox" name="goal" value="goal2">&nbsp;목표2<br>
-                        <input type="checkbox" name="goal" value="goal3">&nbsp;목표3<br>
-                        <input type="checkbox" name="goal" value="goal4">&nbsp;목표4<br>
-                        <input type="checkbox" name="goal" value="goal5">&nbsp;목표5<br>
+            <div class="rings" style="position: absolute;">
+                <div class="set1">
+                    <div class="ring">
                     </div>
-                    <div class="btn_ach">
-                        <button class="send">반영하기</button><br>
-                        <progress class="status" value="20" max="100"></progress>
+                    <div class="ring">
+                    </div>
+                </div>
+                <div class="set2">
+                    <div class="ring">
+                    </div>
+                    <div class="ring">
                     </div>
                 </div>
             </div>
-            <div class="box7">
-                <h4 class="title">What friends say</h4>
-                <hr>
-                <p>최신 방명록</p>
+            <div class="box3">
+                <div class="box4">
+                    <div class="box5">
+                        <h4 class="title">우리 팀만의 특징</h4>
+                        <hr>
+                        <li>팀원들이 모두 I이다.</li>
+                        <li>사전캠프를 빠짐없이 완주할 정도로 성실하다.</li>
+                        <li>모두 코딩도사(지망생)들이다.</li>
+                    </div>
+                    <div class="box5">
+                        <h4 class="title">우리 팀만의 약속</h4>
+                        <hr>
+                        <li>팀원 간의 상호 존중</li>
+                        <li>팀원 간의 호칭 '-님'으로 부르기</li>
+                        <li>회의 시간 준수하기</li>
+                    </div>
+                </div>
+                <div class="box6">
+                    <h4 class="title">Our Goals</h4>
+                    <hr>
+                    <div class="goals">
+                        <div class="checkbox">
+                            <input type="checkbox" name="goal" value="goal1">&nbsp;개인 페이지 완성<br>
+                            <input type="checkbox" name="goal" value="goal2">&nbsp;메인 페이지 완성<br>
+                            <input type="checkbox" name="goal" value="goal3">&nbsp;달성도를 상태바에 반영<br>
+                            <input type="checkbox" name="goal" value="goal4">&nbsp;검색창 이용<br>
+                            <input type="checkbox" name="goal" value="goal5">&nbsp;방명록 완성<br>
+                        </div>
+                        <div class="btn_ach">
+                            <button class="send">반영하기</button><br>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box7">
+                    <h4 class="title">What friends say</h4>
+                    <hr>
+                    <p>최신 방명록</p>
+                </div>
             </div>
-        </div>
-        <div class="buttons" style="position: absolute;">
-            <button>홈</button>
-            <button>김성훈</button>
-            <button>김민선</button>
-            <button id="minah" class="minah">유민아</button>
-            <button>이예진</button>
-            <button>방명록</button>
+            <div class="buttons" style="position: absolute;">
+                <button>홈</button>
+                <button>김성훈</button>
+                <button>김민선</button>
+                <button id="minah" class="minah">유민아</button>
+                <button>이예진</button>
+                <button>방명록</button>
+            </div>
         </div>
     </div>
-
 
 </body>
 
