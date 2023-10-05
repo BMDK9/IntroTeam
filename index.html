@@ -263,7 +263,7 @@
         // Firebase SDK 라이브러리 가져오기
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { doc, collection, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc, collection, addDoc, updateDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
         // Firebase 구성 정보 설정
@@ -360,7 +360,6 @@
 
         $(document).ready(async function () {
             let getData = await getDocs(collection(db, "goals"));
-            let temp;
             getData.forEach((doc) => {
                 console.log("Current data: ", doc.data());
                 let goal = doc.data();
@@ -370,7 +369,6 @@
                 let searchInput = goal['search'];
                 let achievement = goal['achievement'];
                 let visitorBook = goal['visitorBook'];
-
                 let count = goal['count'];
 
 
@@ -384,6 +382,26 @@
                 progressbar.style.width = ((count / 5) * 100) + "%";
             });
 
+        })
+
+        $(document).ready(async function () {
+            let getData = await getDocs(collection(db, "logs"));
+            let temp = ``;
+            getData.forEach((doc) => {
+                let log = doc.data();
+
+                let content = log['content'];
+                let date = log['date'];
+
+                let update = {
+                'content': $(`#content`),
+                'date': $('#date')
+                };
+
+                temp = `<p>${content} ( Date: ${date} )</p>`;
+            });
+
+            $('#visit-comment').append(temp);
         })
 
     </script>
@@ -475,10 +493,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="box7">
+                <div class="box7" id="visit-comment">
                     <h4 class="title">What friends say</h4>
                     <hr>
-                    <p>최신 방명록</p>
+
                 </div>
             </div>
             <div class="buttons" style="position: absolute;">
