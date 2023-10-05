@@ -199,7 +199,7 @@
 
         .progress {
             width: 200px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             background-color: white;
         }
 
@@ -263,9 +263,8 @@
         // Firebase SDK 라이브러리 가져오기
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc, collection, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { doc, onSnapshot, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
         // Firebase 구성 정보 설정
         const firebaseConfig = {
@@ -293,7 +292,7 @@
             searchWord = $('#search').val();
 
             if (searchWord == '김성훈')
-                location.href = '1.html'; // 김성훈님
+                location.href = 'sunghun.html'; // 김성훈님
             else if (searchWord == '김민선')
                 location.href = '2.html'; // 김민선님
             else if (searchWord == '유민아')
@@ -324,74 +323,69 @@
             location.href = 'yejinpage.html';
         })
 
-        /*
-        $('#sendbtn').click(async function () {
-            let number = document.querySelectorAll("input[type='checkbox']:checked").length;
-            alert('반영 완료!');
-            progressbar.style.width = ((number / 5) * 100) + "%";
-        });
-        */
+        $('#sunghun').click(function () {
+            location.href = 'sunghun.html';
+        })
 
         async function dataUpdate() {
-            console.log('버튼함수');
             let boxes = $("input[type='checkbox']:checked");
-            let 체크됨 = boxes.length;
+            let checked = boxes.length;
 
             let getId = $('#sendbtn').on('click', '.checkbox', function () {
                 let boxId = $(this).attr('id');
             })
 
-            let 올리기 = {
-                'goal1': $('#goal1').is(':checked'),
-                'goal2': $('#goal2').is(':checked'),
-                'goal3': $('#goal3').is(':checked'),
-                'goal4': $('#goal4').is(':checked'),
-                'goal5': $('#goal5').is(':checked'),
-                'count': 체크됨
+            let update = { // 업데이트할 데이터
+                'main': $(`#main`).is(':checked'),
+                'personal': $('#personal').is(':checked'),
+                'search': $(`#search-input`).is(':checked'),
+                'achievement': $(`#achievement`).is(':checked'),
+                'visitorBook': $(`#visitorBook`).is(':checked'),
+
+                'count': checked
             };
 
-            let 가져오기 = await getDocs(collection(db, "달성도값"));
-            가져오기.forEach(async (data) => {
-                await updateDoc(doc(db, "달성도값", data.id), 올리기);
+            let dataPackage = await getDocs(collection(db, "goals"));
+            dataPackage.forEach(async (data) => {
+                console.log(data.id, update);
+                await updateDoc(doc(db, "goals", data.id), update);
                 window.location.reload();
             })
         }
 
-        //달성도
         $('#sendbtn').click(async function () {
             dataUpdate();
         });
 
+
         $(document).ready(async function () {
-            let 가져오기 = await getDocs(collection(db, "달성도값"));
-            let 임시;
-            가져오기.forEach((doc) => {
-                let 달성률 = 0;
+            let getData = await getDocs(collection(db, "goals"));
+            let temp;
+            getData.forEach((doc) => {
+                console.log("Current data: ", doc.data());
                 let goal = doc.data();
 
-                let goal1 = goal['goal1'];
-                let goal2 = goal['goal2'];
-                let goal3 = goal['goal3'];
-                let goal4 = goal['goal4'];
-                let goal5 = goal['goal5'];
+                let main = goal['main'];
+                let personal = goal['personal'];
+                let searchInput = goal['search'];
+                let achievement = goal['achievement'];
+                let visitorBook = goal['visitorBook'];
+
                 let count = goal['count'];
 
-                $('#goal1').prop("checked", goal1);
-                $('#goal2').prop("checked", goal2);
-                $('#goal3').prop("checked", goal3);
-                $('#goal4').prop("checked", goal4);
-                $('#goal5').prop("checked", goal5);
+
+
+                $('#main').prop("checked", main);
+                $('#personal').prop("checked", personal);
+                $('#search-input').prop("checked", searchInput);
+                $('#achievement').prop("checked", achievement);
+                $('#visitorBook').prop("checked", visitorBook);
 
                 progressbar.style.width = ((count / 5) * 100) + "%";
-
-                /*
-                임시 = `<div class="progress" style="height: 10px;">
-                                <div class="progress-bar" id="progressbar" role="progressbar" style="width: ${count}/5*100%"
-                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>`
-                */
             });
+
         })
+
     </script>
 </head>
 
@@ -455,19 +449,29 @@
                     <hr>
                     <div class="goals">
                         <div class="checkbox">
-                            <input type="checkbox" id="goal1" name="goal" value="1">&nbsp;개인 페이지 완성<br>
-                            <input type="checkbox" id="goal2" name="goal" value="1">&nbsp;메인 페이지 완성<br>
-                            <input type="checkbox" id="goal3" name="goal" value="1">&nbsp;달성도를 상태바에 반영<br>
-                            <input type="checkbox" id="goal4" name="goal" value="1">&nbsp;검색창 이용<br>
-                            <input type="checkbox" id="goal5" name="goal" value="1">&nbsp;방명록 완성<br>
+                            <div class="with">
+                                <form>
+                                    <input class="checkbox" id="personal" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;개인페이지 완성<br>
+                                    <input class="checkbox" id="main" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;메인페이지 완성<br>
+                                    <input class="checkbox" id="search-input" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;&nbsp;검색창
+                                    이용<br>
+                                    <input class="checkbox" id="achievement" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;달성도 상태바에 반영<br>
+                                    <input class="checkbox" id="visitorBook" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;방명록 완성<br>
+                                </form>
+                            </div>
+
                         </div>
-                        <div class="btn_ach">
+                        <div class="btn_ach" id="btn_ach">
                             <button id="sendbtn" class="send">반영하기</button><br>
                             <div class="progress" style="height: 10px;">
                                 <div class="progress-bar" id="progressbar" role="progressbar" style="width: 0%"
                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -479,7 +483,7 @@
             </div>
             <div class="buttons" style="position: absolute;">
                 <button id="index" class="index">홈</button>
-                <button>김성훈</button>
+                <button id="sunghun" class="sunghun">김성훈</button>
                 <button>김민선</button>
                 <button id="minah" class="minah">유민아</button>
                 <button id="yejin" class="yejin">이예진</button>
