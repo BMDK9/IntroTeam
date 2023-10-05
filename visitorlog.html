@@ -72,7 +72,9 @@
         .myimage {
             width: 160px;
             height: 160px;
-            background-color: aquamarine;
+            background-image: url(image/logo.jpg);
+            background-position: center;
+            background-size: cover;
 
             margin: 0px auto 15px auto;
         }
@@ -191,6 +193,10 @@
             width: 100%;
             text-align: left;
 
+        }
+
+        .buttons>.visit {
+            background-color: rgb(153, 153, 153);
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -366,7 +372,7 @@
             <button id="member2">김민선</button>
             <button id="member3">유민아</button>
             <button id="member4">이예진</button>
-            <button>방명록</button>
+            <button class="visit">방명록</button>
         </div>
     </div>
 
