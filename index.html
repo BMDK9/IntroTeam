@@ -263,7 +263,7 @@
         // Firebase SDK 라이브러리 가져오기
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc, collection, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
         // Firebase 구성 정보 설정
@@ -292,7 +292,7 @@
             searchWord = $('#search').val();
 
             if (searchWord == '김성훈')
-                location.href = '1.html'; // 김성훈님
+                location.href = 'sunghun.html'; // 김성훈님
             else if (searchWord == '김민선')
                 location.href = '2.html'; // 김민선님
             else if (searchWord == '유민아')
@@ -323,11 +323,15 @@
             location.href = 'yejinpage.html';
         })
 
-        $('#sendbtn').click(async function () {
+        $('#sunghun').click(function () {
+            location.href = 'sunghun.html';
+        })
+
+        /* $('#sendbtn').click(async function () {
             let number = document.querySelectorAll("input[type='checkbox']:checked").length;
             alert('반영 완료!');
             progressbar.style.width = ((number / 5) * 100) + "%";
-        });
+        }); */
 
         /*
         async function updateProgress() {
@@ -358,6 +362,67 @@
             await updateProgress(); // 초기 로딩 시 progress 업데이트
         })();
         */
+
+
+        async function dataUpdate() {
+            let boxes = $("input[type='checkbox']:checked");
+            let checked = boxes.length;
+
+            let getId = $('#sendbtn').on('click', '.checkbox', function () {
+                let boxId = $(this).attr('id');
+            })
+
+            let update = { // 업데이트할 데이터
+                'main': $(`#main`).is(':checked'),
+                'personal': $('#personal').is(':checked'),
+                'search': $(`#search-input`).is(':checked'),
+                'achievement': $(`#achievement`).is(':checked'),
+                'visitorBook': $(`#visitorBook`).is(':checked'),
+
+                'count': checked
+            };
+
+            let dataPackage = await getDocs(collection(db, "goals"));
+            dataPackage.forEach(async (data) => {
+                console.log(data.id, update);
+                await updateDoc(doc(db, "goals", data.id), update);
+                window.location.reload();
+            })
+        }
+
+        $('#sendbtn').click(async function () {
+            dataUpdate();
+        });
+
+
+        $(document).ready(async function () {
+            let getData = await getDocs(collection(db, "goals"));
+            let temp;
+            getData.forEach((doc) => {
+                console.log("Current data: ", doc.data());
+                let goal = doc.data();
+
+                let main = goal['main'];
+                let personal = goal['personal'];
+                let searchInput = goal['search'];
+                let achievement = goal['achievement'];
+                let visitorBook = goal['visitorBook'];
+
+                let count = goal['count'];
+
+
+
+                $('#main').prop("checked", main);
+                $('#personal').prop("checked", personal);
+                $('#search-input').prop("checked", searchInput);
+                $('#achievement').prop("checked", achievement);
+                $('#visitorBook').prop("checked", visitorBook);
+
+                temp = `<progress class="status" value="${count}" max="5"></progress>`;
+            });
+
+            $('#btn_ach').append(temp);
+        })
 
     </script>
 </head>
@@ -422,18 +487,29 @@
                     <hr>
                     <div class="goals">
                         <div class="checkbox">
-                            <input type="checkbox" name="goal" value="1">&nbsp;개인 페이지 완성<br>
-                            <input type="checkbox" name="goal" value="1">&nbsp;메인 페이지 완성<br>
-                            <input type="checkbox" name="goal" value="1">&nbsp;달성도를 상태바에 반영<br>
-                            <input type="checkbox" name="goal" value="1">&nbsp;검색창 이용<br>
-                            <input type="checkbox" name="goal" value="1">&nbsp;방명록 완성<br>
+                            <div class="with">
+                                <form>
+                                    <input class="checkbox" id="personal" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;개인페이지 완성<br>
+                                    <input class="checkbox" id="main" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;메인페이지 완성<br>
+                                    <input class="checkbox" id="search-input" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;&nbsp;검색창
+                                    이용<br>
+                                    <input class="checkbox" id="achievement" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;달성도 상태바에 반영<br>
+                                    <input class="checkbox" id="visitorBook" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;방명록 완성<br>
+                                </form>
+                            </div>
+
                         </div>
-                        <div class="btn_ach">
+                        <div class="btn_ach" id="btn_ach">
                             <button id="sendbtn" class="send">반영하기</button><br>
-                            <div class="progress" style="height: 10px;">
+                            <!-- <div class="progress" style="height: 10px;">
                                 <div class="progress-bar" id="progressbar" role="progressbar" style="width: 0%"
                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -445,7 +521,7 @@
             </div>
             <div class="buttons" style="position: absolute;">
                 <button id="index" class="index">홈</button>
-                <button>김성훈</button>
+                <button id="sunghun" class="sunghun">김성훈</button>
                 <button>김민선</button>
                 <button id="minah" class="minah">유민아</button>
                 <button id="yejin" class="yejin">이예진</button>
