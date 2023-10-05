@@ -310,18 +310,26 @@
                 getSearchResult();
             }
         })
-
+        //사이드태그
         $('#index').click(function () {
             location.href = 'index.html';
-        })
+        }) //메인
+
+        $('#sunghun').click(function () {
+            location.href = 'sunghun.html';
+        }) //성훈
 
         $('#minah').click(function () {
             location.href = 'minahpage.html';
-        })
+        }) //민아
 
         $('#yejin').click(function () {
             location.href = 'yejinpage.html';
-        })
+        }) //예진
+
+        $('#visit').click(function () {
+            location.href = 'visitorlog.html';
+        }) //방명록
 
         $('#sendbtn').click(async function () {
             let number = document.querySelectorAll("input[type='checkbox']:checked").length;
@@ -443,14 +451,14 @@
                     <p>최신 방명록</p>
                 </div>
             </div>
-            <div class="buttons" style="position: absolute;">
-                <button id="index" class="index">홈</button>
-                <button>김성훈</button>
-                <button>김민선</button>
-                <button id="minah" class="minah">유민아</button>
-                <button id="yejin" class="yejin">이예진</button>
-                <button>방명록</button>
-            </div>
+        <div class="buttons" style="position: absolute;">
+            <button id="index" class="index">홈</button>
+            <button id="sunghun" class="sunghun">김성훈</button>
+            <button id="" class="">김민선</button>
+            <button id="minah" class="minah">유민아</button>
+            <button id="yejin" class="yejin">이예진</button>
+            <button id="visit" class="visit">방명록</button>
+        </div>
         </div>
     </div>
 
