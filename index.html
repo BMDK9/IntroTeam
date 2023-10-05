@@ -169,8 +169,6 @@
             background-position: center;
             background-size: contain;
 
-            background-color: aquamarine;
-
             display: flex;
             flex-direction: column;
             text-align: center;
@@ -258,6 +256,7 @@
             background-color: rgb(153, 153, 153);
         }
     </style>
+
     <script type="module">
         // Firebase SDK 라이브러리 가져오기
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
@@ -299,9 +298,9 @@
                 location.href = 'minahpage.html'; // 유민아
             else if (searchWord == '이예진')
                 location.href = 'yejinpage.html'; // 이예진님
-            else 
+            else
                 alert(`${searchWord} 에 대한 검색 결과를 찾을 수 없습니다.`);
-        }
+            } 
 
         let searchWord = '';
         $('#search').keydown(function (e) { // enter 눌렀을 때 검색어 가져와서 전달
@@ -309,6 +308,10 @@
                 e.preventDefault();
                 getSearchResult();
             }
+        })
+
+        $('#index').click(function(){
+            location.href =  'index.html';
         })
 
         $('#minah').click(function () {
