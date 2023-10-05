@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인페이지</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="./css/index.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+    body {
+        background-image: url('./image/mainimg.jpg');
+    }
+    </style>
+
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc, collection, addDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs, query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        // Firebase 구성 정보 설정
+        const firebaseConfig = {
+            apiKey: "AIzaSyAzXX5j6y95F5-w-aemZc--QymtiWT_UVM",
+            authDomain: "intro-team-42d34.firebaseapp.com",
+            projectId: "intro-team-42d34",
+            storageBucket: "intro-team-42d34.appspot.com",
+            messagingSenderId: "367458824490",
+            appId: "1:367458824490:web:b05f0947f7149006206e53",
+            measurementId: "G-0488K83Q4K"
+        };
+
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+
+
+
+
+
+        async function getSearchResult() { // 검색 결과 보여주는 함수
+            searchWord = $('#search').val();
+
+            if (searchWord == '김성훈')
+                location.href = 'sunghun.html'; // 김성훈님
+            else if (searchWord == '김민선')
+                location.href = '2.html'; // 김민선님
+            else if (searchWord == '유민아')
+                location.href = 'minahpage.html'; // 유민아
+            else if (searchWord == '이예진')
+                location.href = 'yejinpage.html'; // 이예진님
+            else
+                alert(`${searchWord} 에 대한 검색 결과를 찾을 수 없습니다.`);
+        }
+
+        let searchWord = '';
+        $('#search').keydown(function (e) { // enter 눌렀을 때 검색어 가져와서 전달
+            if (e.keyCode == 13) {
+                e.preventDefault();
+                getSearchResult();
+            }
+        })
+        //사이드태그
+        $('#index').click(function () {
+            location.href = 'index.html';
+        }) //메인
+
+        $('#sunghun').click(function () {
+            location.href = 'sunghun.html';
+        }) //성훈
+
+        $('#minsun').click(function () {
+            location.href = 'minsunpage.html';
+        }) //민선
+
+        $('#minah').click(function () {
+            location.href = 'minahpage.html';
+        }) //민하
+
+        $('#yejin').click(function () {
+            location.href = 'yejinpage.html';
+        }) //예진
+
+        $('#visitor').click(function () {
+            location.href = 'visitorlog.html';
+        }) //방명록
+
+        async function dataUpdate() {
+            let boxes = $("input[type='checkbox']:checked");
+            let checked = boxes.length;
+
+            let getId = $('#sendbtn').on('click', '.checkbox', function () {
+                let boxId = $(this).attr('id');
+            })
+
+            let update = { // 업데이트할 데이터
+                'main': $(`#main`).is(':checked'),
+                'personal': $('#personal').is(':checked'),
+                'search': $(`#search-input`).is(':checked'),
+                'achievement': $(`#achievement`).is(':checked'),
+                'visitorBook': $(`#visitorBook`).is(':checked'),
+
+                'count': checked
+            };
+
+            let dataPackage = await getDocs(collection(db, "goals"));
+            dataPackage.forEach(async (data) => {
+                console.log(data.id, update);
+                await updateDoc(doc(db, "goals", data.id), update);
+                window.location.reload();
+            })
+        }
+
+        $('#sendbtn').click(async function () {
+            dataUpdate();
+        });
+
+
+        $(document).ready(async function () {
+            let getData = await getDocs(collection(db, "goals"));
+            let temp;
+            getData.forEach((doc) => {
+                console.log("Current data: ", doc.data());
+                let goal = doc.data();
+
+                let main = goal['main'];
+                let personal = goal['personal'];
+                let searchInput = goal['search'];
+                let achievement = goal['achievement'];
+                let visitorBook = goal['visitorBook'];
+
+                let count = goal['count'];
+
+                $('#main').prop("checked", main);
+                $('#personal').prop("checked", personal);
+                $('#search-input').prop("checked", searchInput);
+                $('#achievement').prop("checked", achievement);
+                $('#visitorBook').prop("checked", visitorBook);
+
+                progressbar.style.width = ((count / 5) * 100) + "%";
+            });
+
+        })
+
+    </script>
+</head>
+
+<body>
+    <div class="box0">
+        <div class="box1" style="position:relative;">
+            <div class="uppertext" style="position: absolute;">
+                <p class="text1" style="display:inline">TODAY <span class="red">2002</span> | TOTAL 118</p>
+                <p class="text2" style="display:inline; font-size: 30px; font-weight: 600;">I-world</p>
+                <p class="text3" style="display:inline">참고: https://www.cyworld.com</p>
+                <div class="search-box">
+                    <form class="d-flex search-form" role="search">
+                        <a><img class="search-icon" src="./image/search-icon.png"></a>
+                        <input id="search" class="form-control me-2" type="text" placeholder="Search"
+                            aria-label="Search">
+                    </form>
+                </div>
+
+            </div>
+            <div class="box2">
+                <p class="mood" style="font-size: 15px;">TODAY is 행복🎃</p>
+                <div class="myimage">
+                </div>
+                <div class="introduce">
+                    <p style="font-size: 14px;">I 좋은 사람들 I 좋은 세상 <br> 내일배움캠프 <br> 3기 spring b반 3조 <br>
+                                                <br> I-WORLD 에 오신걸 <br> 환영합니다!</p>
+                </div>
+            </div>
+            <div class="rings" style="position: absolute;">
+                <div class="set1">
+                    <div class="ring">
+                    </div>
+                    <div class="ring">
+                    </div>
+                </div>
+                <div class="set2">
+                    <div class="ring">
+                    </div>
+                    <div class="ring">
+                    </div>
+                </div>
+            </div>
+            <div class="box3">
+                <div class="box4">
+                    <div class="box5">
+                        <h4 class="title">우리 팀만의 특징</h4>
+                        <hr>
+                        <li>팀원들이 모두 I이다.</li>
+                        <li>사전캠프를 빠짐없이 완주할 정도로 성실하다.</li>
+                        <li>모두 코딩도사(지망생)들이다.</li>
+                    </div>
+                    <div class="box5">
+                        <h4 class="title">우리 팀만의 약속</h4>
+                        <hr>
+                        <li>팀원 간의 상호 존중</li>
+                        <li>팀원 간의 호칭 '-님'으로 부르기</li>
+                        <li>회의 시간 준수하기</li>
+                    </div>
+                </div>
+                <div class="box6">
+                    <h4 class="title">Our Goals</h4>
+                    <hr>
+                    <div class="goals">
+                        <div class="checkbox">
+                            <div class="with">
+                                <form>
+                                    <input class="checkbox" id="personal" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;개인페이지 완성<br>
+                                    <input class="checkbox" id="main" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;메인페이지 완성<br>
+                                    <input class="checkbox" id="search-input" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;&nbsp;검색창
+                                    이용<br>
+                                    <input class="checkbox" id="achievement" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;달성도 상태바에 반영<br>
+                                    <input class="checkbox" id="visitorBook" type="checkbox"
+                                        style="margin-left: 2.5%;">&nbsp;방명록 완성<br>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="btn_ach" id="btn_ach">
+                            <button id="sendbtn" class="send">반영하기</button><br>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar" id="progressbar" role="progressbar" style="width: 0%"
+                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box7">
+                    <h4 class="title">What friends say</h4>
+                    <hr>
+                    <p>최신 방명록</p>
+                </div>
+            </div>
+
+            <div class="buttons" style="position: absolute;">
+                <button id="index" class="index">홈</button>
+                <button id="sunghun" class="sunghun">김성훈</button>
+                <button id="minsun" class="minsun">김민선</button>
+                <button id="minah" class="minah">유민아</button>
+                <button id="yejin" class="yejin">이예진</button>
+                <button id="visitor" class="visitor">방명록</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
