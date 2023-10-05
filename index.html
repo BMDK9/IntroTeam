@@ -264,32 +264,19 @@
 
 
 
-        async function getSearchResult() { // db에 검색결과가 있는지 확인하여 그에 따른 결과를 보여주는 함수
+        async function getSearchResult() { // 검색 결과 보여주는 함수
             searchWord = $('#search').val();
 
-            let searchData = await getDocs(
-                query(
-                    collection(db, "member"),
-                    where('name', '==', searchWord))
-            );
-
-            if (searchData.empty) {
+            if (searchWord == '김성훈')
+                location.href = '1.html'; // 김성훈님
+            else if (searchWord == '김민선')
+                location.href = '2.html'; // 김민선님
+            else if (searchWord == '유민아')
+                location.href = 'minahpage.html'; // 유민아
+            else if (searchWord == '이예진')
+                location.href = 'yejinpage.html'; // 이예진님
+            else 
                 alert(`${searchWord} 에 대한 검색 결과를 찾을 수 없습니다.`);
-            } else {
-                searchData.forEach((data) => {
-                    let result = data.data();
-                    let memberId = data.id;
-
-                    if (memberId == 0)
-                        location.href = '0.html'; // 김성훈님
-                    if (memberId == 1)
-                        location.href = '1.html'; // 김민선님
-                    if (memberId == 2)
-                        location.href = 'minahpage.html'; // 유민아
-                    if (memberId == 3)
-                        location.href = '3.html'; // 이예진님
-                })
-            }
         }
 
         let searchWord = '';
