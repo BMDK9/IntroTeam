@@ -287,7 +287,7 @@
             <span class="input-group-text">${object.name}</span>
             <span><input type="text" id="deleteLogPw" placeholder="Password" aria-label="Password" class="form-control"></span>
             <button class="btn btn-secondary" type="button" id="deleteLogBtn">삭제</button>
-            <div class="logText" password =${object.pw} id = ${child.ref.key}>
+            <div class="logText" id = ${child.ref.key}>
                 ${object.content}
             </div>
         </div>
@@ -332,7 +332,6 @@
 
         //페이지간 이동 부분 
         $("#member1").click(async function () {
-
             location.href = 'sunghun.html';
         });
         $("#member2").click(async function () {
