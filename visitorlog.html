@@ -348,28 +348,6 @@
 
         //방명록 삭제 끝남
 
-            let name = row['name'];
-            let pw = row['pw'];
-            let content = row['content'];
-            let date = row['date']
-
-            let temp = `
-            <div class="log">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">${date}</span>
-                    <span class="input-group-text">${name}</span>
-                    <span><input type="text" id="deleteLogPw" placeholder="Password" aria-label="Password" class="form-control"></span>
-                    <button class="btn btn-secondary" type="button" id="deleteLogBtn">삭제</button>
-                    <div class="logText" content = ${content}>
-                        ${content}
-                    </div>
-                </div>
-            </div>
-            `;
-
-            $('#logBox').append(temp)
-        });
-
         //페이지간 이동 부분 
         $("#member1").click(async function () {
 
