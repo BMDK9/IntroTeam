@@ -33,8 +33,6 @@
         const db = getFirestore(app);
 
 
-
-
         let searchWord = '';
         let dataPackage = await getDocs(collection(db, "goals")); // 데이터 가져오기
 
@@ -141,17 +139,16 @@
 
 
         })
-
     </script>
     <script>
-         $(document).ready(async function () {
-        //방명록 불러와봄
-        let contentvalue = localStorage.getItem('content');
-        let namevalue = localStorage.getItem('name');
-        let temp = `<p>${contentvalue} (${namevalue})</p>`
-        
-        $('#visit-comment').append(temp);
-         });
+        $(document).ready(async function () {
+            //방명록 불러와봄
+            let contentvalue = localStorage.getItem('content');
+            let namevalue = localStorage.getItem('name');
+            let temp = `<p>${contentvalue} (${namevalue})</p>`
+
+            $('#visit-comment').append(temp);
+        });
     </script>
 
 </head>
