@@ -62,32 +62,6 @@
                 getSearchResult();
             }
         })
-        /*
-        //사이드태그
-        $('#index').click(function () {
-            location.href = 'index.html';
-        }) //메인
-
-        $('#sunghun').click(function () {
-            location.href = 'sunghun.html';
-        }) //성훈
-
-        $('#minsun').click(function () {
-            location.href = 'minsunpage.html';
-        }) //민선
-
-        $('#minah').click(function () {
-            location.href = 'minahpage.html';
-        }) //민아
-
-        $('#yejin').click(function () {
-            location.href = 'yejinpage.html';
-        }) //예진
-
-        $('#visitor').click(function () {
-            location.href = 'visitorlog.html';
-        }) //방명록
-        */
 
         async function dataUpdate() {
             let boxes = $("input[type='checkbox']:checked");
@@ -145,14 +119,23 @@
 
     </script>
     <script>
-         $(document).ready(async function () {
-        //방명록 불러와봄
-        let contentvalue = localStorage.getItem('content');
-        let namevalue = localStorage.getItem('name');
-        let temp = `<p>${contentvalue} (${namevalue})</p>`
-        
-        $('#visit-comment').append(temp);
-         });
+        $(document).ready(async function () {
+            //방명록 불러와봄
+            let content1 = localStorage.getItem('content1');
+            let name1 = localStorage.getItem('name1');
+            let content2 = localStorage.getItem('content2');
+            let name2 = localStorage.getItem('name2');
+            let content3 = localStorage.getItem('content3');
+            let name3 = localStorage.getItem('name3');
+            let temp = `
+            <p>${content1} (${name1})</p>
+            <p>${content2} (${name2})</p>
+            <p>${content3} (${name3})</p>
+            `
+
+            $('#visit-comment').append(temp);
+        });
+
     </script>
 
 </head>
