@@ -277,9 +277,9 @@
         //방명록 불러오는 부분
         const dbRef = database.ref('logs');
         dbRef.on("value", (snapshot) => {
-            snapshot.forEach((childSnapshot) => {
+            snapshot.forEach((child) => {
                 //const childKey = childSnapshot.key;
-                const object = childSnapshot.val();
+                const object = child.val();
                 let temp = `
     <div class="log">
         <div class="input-group mb-3">
@@ -287,7 +287,7 @@
             <span class="input-group-text">${object.name}</span>
             <span><input type="text" id="deleteLogPw" placeholder="Password" aria-label="Password" class="form-control"></span>
             <button class="btn btn-secondary" type="button" id="deleteLogBtn">삭제</button>
-            <div class="logText" name = ${object.name} password =${object.pw} content = ${String(object.content)}>
+            <div class="logText" password =${object.pw} id = ${child.ref.key}>
                 ${object.content}
             </div>
         </div>
@@ -304,48 +304,30 @@
         //방명록 삭제하는 부분
         $(document).on("click", "#deleteLogBtn", function () {
 
-            console.log("click");
+            //alert("click");
 
             let parentDiv = $(this).closest('div');
             let textDiv = parentDiv.children('.logText');
-            let pwInput = parentDiv.children('.form-control');
+            let pwInput = parentDiv.find('input');
 
-            let val = textDiv.attr('name');
-            let password = textDiv.attr('password');
 
-            console.log("name");
-            console.log(val);
-
-            console.log("password");
-            //let password = pwInput.val();
-            //console.log(passwordInput);
+            let id = textDiv.attr('id');
+            let password = pwInput.val();
 
             const dbRef = database.ref('logs');
-            console.log(dbRef);
-            let key = "";
 
             dbRef.on("value", (snapshot) => {
                 snapshot.forEach((child) => {
-                    //const childKey = childSnapshot.key;
                     const object = child.val();
-                    console.log("object.content");
-                    console.log(object.content);
-                    console.log("object.name");
-                    console.log(object.name);
-                    console.log(snapshot);
-                    console.log(child.ref);
-                    console.log(child.ref.key);
 
-                    if((object.name == val) && (object.pw == password)) {
-                        console.log("the same");
-                        dbRef.child(child.ref.key).remove();
+                    if((id == child.ref.key )&&(object.pw == password)) {
+                        console.log("the same password");
+                        dbRef.child(id).remove();
                     }
                 });
             });
             window.location.reload();
         });
-
-
         //방명록 삭제 끝남
 
         //페이지간 이동 부분 
