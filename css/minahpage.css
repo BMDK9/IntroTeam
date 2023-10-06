@@ -12,10 +12,10 @@ body {
 
 .box0 {
     width: 1100px;
-    height: 700px;
-    background-color: #002561;
+    height: 720px;
+    background-color: #E0E0E0;
 
-    margin: 80px auto 0px auto;
+    margin: 80px auto 80px auto;
     border-radius: 10px;
 
     display: flex;
@@ -23,13 +23,13 @@ body {
 
 .box1 {
     width: 1000px;
-    height: 600px;
+    height: 640px;
     background-color: #c4d3ea;
 
     margin: 40px auto 0px auto;
     border-radius: 10px;
 
-    padding-top: 65px;
+    padding-top: 45px;
     padding-left: 35px;
     display: flex;
 }
@@ -60,7 +60,7 @@ body {
 
 .box2 {
     width: 200px;
-    height: 500px;
+    height: 560px;
     background-color: white;
     border: 1px solid black;
     margin-right: 30px;
@@ -121,7 +121,7 @@ body {
 
 .box3 {
     width: 700px;
-    height: 500px;
+    height: 560px;
     background-color: white;
     border: 1px solid black;
 

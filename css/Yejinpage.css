@@ -6,7 +6,11 @@
 }
 
 body {
-    background-image: url('../image/sunghunimg/바탕.jpg');
+    background-image: url('../image/yejin/flower.jpg');
+    background-position: center;
+    background-size: contain;
+    background-color: #DEDEDE;
+    background-blend-mode: multiply;
 }
 
 .box0 {
@@ -23,9 +27,12 @@ body {
 .box1 {
     width: 1000px;
     height: 640px;
-    background-color: #E0E0E0;
+    background-image: url("../image/yejin/—Pngtree—grid\ pattern.png");
+    background-position: center;
+    background-size: cover;
+    margin: 40px auto 0px auto;
 
-    margin: 100px auto 0px auto;
+    border-radius: 10px;
 
     padding-top: 45px;
     padding-left: 35px;
@@ -73,6 +80,10 @@ body {
 .myimage {
     width: 160px;
     height: 160px;
+    background-image: url("../image/yejin/KakaoTalk_20231001_140851846.jpg");
+    background-position: center;
+    background-size: cover;
+
     margin: 0px auto 15px auto;
 }
 
@@ -89,7 +100,7 @@ body {
 .introduce {
     width: 160px;
     height: 25px;
-    margin: 25px auto 0px auto;
+    margin: 15px auto 0px auto;
 }
 
 .rings {
@@ -147,10 +158,36 @@ hr {
     width: 660px;
     height: 380px;
     text-align: left;
-    margin: 20px 20px 0px 20px;
+    margin: 20px 0px 0px 20px;
+}
+
+.images {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-items: center;
+}
+
+.card {
+    width: 140px;
+    height: 250px;
+
+    margin-left: 20px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.card_image {
+    width: 140px;
+    height: 140px;
 }
 
 img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -177,11 +214,6 @@ img {
     justify-content: center;
 }
 
-.my-blog {
-    color: white;
-    text-decoration: none;
-}
-
-.buttons>.sunghun {
+.buttons>.yejin {
     background-color: rgb(153, 153, 153);
 }
