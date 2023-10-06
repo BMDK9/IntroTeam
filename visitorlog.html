@@ -97,6 +97,8 @@
 
 
             //메인페이지 저장 부분 시작
+            localStorage.setItem('visitcommentFlag', true);//메인페이지에서 db를 업데이트 해야할지 알려줌
+
             let content1 = localStorage.getItem('content1');
             let name1 = localStorage.getItem('name1');
             let content2 = localStorage.getItem('content2');
