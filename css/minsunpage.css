@@ -6,28 +6,29 @@
 }
 
 body {
-    background-color: white;    
-    background-image: url('../image/minah/bg.jpg');
+    background-color: white;
+    background-image: url('https://media0.giphy.com/media/cmegx6SssTKmEFEcwj/giphy.gif?cid=ecf05e471lks26uhdv9lzommz167oim7htwp5ken58p1khng&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+    background-size: cover;
+
 }
 
 .box0 {
-    width: 1100px;
-    height: 720px;
-    background-color: #E0E0E0;
+  width: 1100px;
+  height: 720px;
+  background-color: #E0E0E0;
 
-    margin: 80px auto 80px auto;
-    border-radius: 10px;
+  margin: 80px auto 80px auto;
+  border-radius: 10px;
 
-    display: flex;
+  display: flex;
 }
 
 .box1 {
     width: 1000px;
     height: 640px;
-    background-color: #c4d3ea;
+    background-color: #E0E0E0;
 
-    margin: 40px auto 0px auto;
-    border-radius: 10px;
+    margin: 100px auto 0px auto;
 
     padding-top: 45px;
     padding-left: 35px;
@@ -35,9 +36,14 @@ body {
 }
 
 .uppertext {
-    width: 800px;
-    height: 30px;
+    width: 920px;
+    height: 50px;
     margin-top: -40px;
+}
+
+.uppertext> {
+    height: 20px;
+
 }
 
 .text1 {
@@ -78,12 +84,10 @@ body {
     background-color: aquamarine;
 
     margin: 0px auto 15px auto;
-}
+    overflow: hidden;
 
-.myimage>img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
+    object-fit: contain;
+
 }
 
 .label {
@@ -136,10 +140,12 @@ body {
 }
 
 .box4 {
+    width: 700px;
+    height: 300px;
     display: flex;
     flex-direction: row;
     text-align: center;
-    justify-content: center;
+    overflow: hidden;
 }
 
 hr {
@@ -151,49 +157,20 @@ hr {
     height: 130px;
     text-align: left;
     margin: 20px 20px 0px 20px;
+
+}
+
+.boxtext {
+    width: 350px;
+    height: 130px;
+
 }
 
 .box6 {
     width: 660px;
-    height: 380px;
+    height: 300px;
     text-align: left;
     margin: 20px 20px 0px 20px;
-}
-
-.my-images {
-    height: 200px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.my-images>a>img {
-    display: inline-block;
-
-    object-fit: cover;
-    width: 150px;
-    height: 150px;
-
-    border-radius: 7px;
-}
-
-.my-images>a:not(:last-child) {
-    margin-right: 10px;
-}
-
-.my-images>a:not(:nth-of-type(odd)) {
-    margin: 80px auto 0px auto;
-}
-
-#btn-pack {
-    width: 100px;
-    height: 320px;
-    display: flex;
-    flex-direction: column;
-
-    margin-left: 930px;
 }
 
 .buttons {
@@ -218,11 +195,30 @@ hr {
     justify-content: center;
 }
 
-.buttons>.minah {
-    background-color: rgb(153, 153, 153);
+.photos {
+    width: 600px;
+    height: 300px;
+    display: flex;
+    margin: auto;
+    text-align: center;
+
 }
 
-.my-blog {
-    color: white;
-    text-decoration: none;
+.photo {
+
+    width: 220px;
+    height: 120px;
+    overflow: hidden;
+    object-fit: contain;
+
+    margin-right: 10px;
+    margin-left: auto;
+    margin-top: 0px;
+    margin-bottom: 10px;
+
+
+}
+
+.buttons>.minsun {
+    background-color: rgb(153, 153, 153);
 }

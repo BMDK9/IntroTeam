@@ -6,8 +6,11 @@
 }
 
 body {
-    background-color: white;    
-    background-image: url('../image/minah/bg.jpg');
+    background-image: url('../image/yejin/flower.jpg');
+    background-position: center;
+    background-size: contain;
+    background-color: #DEDEDE;
+    background-blend-mode: multiply;
 }
 
 .box0 {
@@ -24,9 +27,11 @@ body {
 .box1 {
     width: 1000px;
     height: 640px;
-    background-color: #c4d3ea;
-
+    background-image: url("../image/yejin/—Pngtree—grid\ pattern.png");
+    background-position: center;
+    background-size: cover;
     margin: 40px auto 0px auto;
+
     border-radius: 10px;
 
     padding-top: 45px;
@@ -75,15 +80,11 @@ body {
 .myimage {
     width: 160px;
     height: 160px;
-    background-color: aquamarine;
+    background-image: url("../image/yejin/KakaoTalk_20231001_140851846.jpg");
+    background-position: center;
+    background-size: cover;
 
     margin: 0px auto 15px auto;
-}
-
-.myimage>img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
 }
 
 .label {
@@ -99,7 +100,7 @@ body {
 .introduce {
     width: 160px;
     height: 25px;
-    margin: 25px auto 0px auto;
+    margin: 15px auto 0px auto;
 }
 
 .rings {
@@ -157,43 +158,38 @@ hr {
     width: 660px;
     height: 380px;
     text-align: left;
-    margin: 20px 20px 0px 20px;
+    margin: 20px 0px 0px 20px;
 }
 
-.my-images {
-    height: 200px;
-
+.images {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    justify-items: center;
 }
 
-.my-images>a>img {
-    display: inline-block;
+.card {
+    width: 140px;
+    height: 250px;
 
-    object-fit: cover;
-    width: 150px;
-    height: 150px;
+    margin-left: 20px;
 
-    border-radius: 7px;
-}
+    border-radius: 10px;
 
-.my-images>a:not(:last-child) {
-    margin-right: 10px;
-}
-
-.my-images>a:not(:nth-of-type(odd)) {
-    margin: 80px auto 0px auto;
-}
-
-#btn-pack {
-    width: 100px;
-    height: 320px;
     display: flex;
     flex-direction: column;
+}
 
-    margin-left: 930px;
+.card_image {
+    width: 140px;
+    height: 140px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .buttons {
@@ -218,11 +214,6 @@ hr {
     justify-content: center;
 }
 
-.buttons>.minah {
+.buttons>.yejin {
     background-color: rgb(153, 153, 153);
-}
-
-.my-blog {
-    color: white;
-    text-decoration: none;
 }
