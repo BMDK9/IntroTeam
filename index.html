@@ -139,9 +139,21 @@
                 progressbar.style.width = ((count / 5) * 100) + "%";
             });
 
+
         })
 
     </script>
+    <script>
+         $(document).ready(async function () {
+        //방명록 불러와봄
+        let contentvalue = localStorage.getItem('content');
+        let namevalue = localStorage.getItem('name');
+        let temp = `<p>${contentvalue} (${namevalue})</p>`
+        
+        $('#visit-comment').append(temp);
+         });
+    </script>
+
 </head>
 
 <body>
@@ -236,7 +248,7 @@
                 <div class="box7" id="visit-comment">
                     <h4 class="title">What friends say</h4>
                     <hr>
-                    <p>최신 방명록</p>
+
                 </div>
             </div>
 

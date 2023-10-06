@@ -207,19 +207,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module">
-        // Import the functions you need from the SDKs you need
-        //import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-        //import { getFirestore } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
-        //import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
-        //import { getDocs } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
-
-
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
 
         const firebaseConfig = {
             apiKey: "AIzaSyAzXX5j6y95F5-w-aemZc--QymtiWT_UVM",
@@ -232,18 +219,8 @@
             measurementId: "G-Y60R200KGX"
         };
 
-        // Initialize Firebase
-        // Firebase 인스턴스 초기화
-        //const app = initializeApp(firebaseConfig);
-        //const db = getFirestore(app);
-
-
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
-
-
-        //export { app, db, collection, getDocs, Timestamp, addDoc };
-        //export { query, orderBy, limit, where, onSnapshot };
 
 
         //방명록 등록하는 부분
@@ -257,7 +234,6 @@
             let month = today.getMonth() + 1;
             let year = today.getFullYear();
 
-            // This arrangement can be altered based on how we want the date's format to appear.
             let date = `${year}-${month}-${day}`;
 
             let doc = {
@@ -270,15 +246,23 @@
 
             await database.ref('logs').push(doc);
 
+
+
+            //메인페이지에 보이게 하기 위해 저장
+            localStorage.setItem('content', content);
+            localStorage.setItem('name', name);
+            //메인페이지 저장 부분 끝
+
             window.location.reload();
         });
+        //방명록 등록 끝
 
 
         //방명록 불러오는 부분
         const dbRef = database.ref('logs');
         dbRef.on("value", (snapshot) => {
             snapshot.forEach((child) => {
-                //const childKey = childSnapshot.key;
+                
                 const object = child.val();
                 let temp = `
     <div class="log">
@@ -298,7 +282,7 @@
 
             });
         });
-        //방명록 등록 끝남
+        //방명록 불러오는 부분 끝남
 
 
         //방명록 삭제하는 부분
@@ -320,9 +304,14 @@
                 snapshot.forEach((child) => {
                     const object = child.val();
 
-                    if((id == child.ref.key )&&(object.pw == password)) {
-                        console.log("the same password");
-                        dbRef.child(id).remove();
+                    if (id == child.ref.key) {
+                        if (object.pw == password) {
+                            dbRef.child(id).remove();
+                        }
+                        else {
+                            alert("잘못된 비밀번호");
+
+                        }
                     }
                 });
             });
@@ -366,12 +355,12 @@
             </div>
             <div class="introduce">
                 <p style="font-size: 14px;">
-                    I 좋은 사람들 I 좋은 세상 <br><br> 
+                    I 좋은 사람들 I 좋은 세상 <br><br>
                     내일배움캠프 <br> 3기 spring b반 3조 <br>
                     <br> I-WORLD 에 오신걸 <br> 환영합니다!
                 </p>
             </div>
-    </div>
+        </div>
         <div class="rings" style="position: absolute;">
             <div class="set1">
                 <div class="ring"></div>
