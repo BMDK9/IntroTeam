@@ -195,7 +195,7 @@
 
         }
 
-        .buttons>.visitor {
+        .buttons>#visitor {
             background-color: rgb(153, 153, 153);
         }
     </style>
@@ -294,30 +294,24 @@
             $('#logBox').append(temp)
         });
 
-        $('#index').click(function () {
-            location.href = 'index.html';
-        })
-
-        $('#sunghun').click(function () {
+        $("#member1").click(async function () {
             location.href = 'sunghun.html';
-        })
-
-        $('#minsun').click(function () {
+        });
+        $("#member2").click(async function () {
             location.href = 'minsunpage.html';
-        })
-
-        $('#minah').click(function () {
+        });
+        $("#member3").click(async function () {
             location.href = 'minahpage.html';
-        })
-
-        $('#yejin').click(function () {
+        });
+        $("#member4").click(async function () {
             location.href = 'yejinpage.html';
-        })
-
+        });
+        $("#home").click(async function () {
+            location.href = 'index.html';
+        });
         $('#visitor').click(function () {
             location.href = 'visitorlog.html';
-        })
-
+        });
     </script>
 </head>
 
@@ -334,21 +328,21 @@
 
             </div>
             <div class="introduce">
-                <p style="font-size: 14px;">I 좋은 사람들 <br>I 좋은 세상 <br>I-WORLD에 오신걸 <br>환영합니다.</p>
+                <p style="font-size: 14px;">
+                    I 좋은 사람들 I 좋은 세상 <br><br> 
+                    내일배움캠프 <br> 3기 spring b반 3조 <br>
+                    <br> I-WORLD 에 오신걸 <br> 환영합니다!
+                </p>
             </div>
-        </div>
+    </div>
         <div class="rings" style="position: absolute;">
             <div class="set1">
-                <div class="ring">
-                </div>
-                <div class="ring">
-                </div>
+                <div class="ring"></div>
+                <div class="ring"></div>
             </div>
             <div class="set2">
-                <div class="ring">
-                </div>
-                <div class="ring">
-                </div>
+                <div class="ring"></div>
+                <div class="ring"></div>
             </div>
         </div>
         <div class="box3">
@@ -375,12 +369,12 @@
             </div>
         </div>
         <div class="buttons" style="position: absolute;">
-            <button id="index" class="index">홈</button>
-                <button id="sunghun" class="sunghun">김성훈</button>
-                <button id="minsun" class="minsun">김민선</button>
-                <button id="minah" class="minah">유민아</button>
-                <button id="yejin" class="yejin">이예진</button>
-                <button id="visitor" class="visitor">방명록</button>
+            <button id="home">홈</button>
+            <button id="member1">김성훈</button>
+            <button id="member2">김민선</button>
+            <button id="member3">유민아</button>
+            <button id="member4">이예진</button>
+            <button id="visitor">방명록</button>
         </div>
     </div>
 
