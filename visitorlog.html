@@ -16,7 +16,7 @@
         }
 
         body {
-            background-color: white;
+            background-image: url('./image/visitorimg.jpg');
         }
 
         .box1 {
@@ -195,7 +195,7 @@
             text-align: left;
         }
 
-        .buttons>.visit {
+        .buttons>#visitor {
             background-color: rgb(153, 153, 153);
         }
     </style>
@@ -348,11 +348,32 @@
 
         //방명록 삭제 끝남
 
+            let name = row['name'];
+            let pw = row['pw'];
+            let content = row['content'];
+            let date = row['date']
 
+            let temp = `
+            <div class="log">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">${date}</span>
+                    <span class="input-group-text">${name}</span>
+                    <span><input type="text" id="deleteLogPw" placeholder="Password" aria-label="Password" class="form-control"></span>
+                    <button class="btn btn-secondary" type="button" id="deleteLogBtn">삭제</button>
+                    <div class="logText" content = ${content}>
+                        ${content}
+                    </div>
+                </div>
+            </div>
+            `;
+
+            $('#logBox').append(temp)
+        });
 
         //페이지간 이동 부분 
         $("#member1").click(async function () {
-            location.href = 'sunghunpage.html';
+
+            location.href = 'sunghun.html';
         });
         $("#member2").click(async function () {
             location.href = 'minsunpage.html';
@@ -366,8 +387,9 @@
         $("#home").click(async function () {
             location.href = 'index.html';
         });
-
-
+        $('#visitor').click(function () {
+            location.href = 'visitorlog.html';
+        });
     </script>
 </head>
 
@@ -384,21 +406,21 @@
 
             </div>
             <div class="introduce">
-                <p style="font-size: 14px;">팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개팀소개</p>
+                <p style="font-size: 14px;">
+                    I 좋은 사람들 I 좋은 세상 <br><br> 
+                    내일배움캠프 <br> 3기 spring b반 3조 <br>
+                    <br> I-WORLD 에 오신걸 <br> 환영합니다!
+                </p>
             </div>
-        </div>
+    </div>
         <div class="rings" style="position: absolute;">
             <div class="set1">
-                <div class="ring">
-                </div>
-                <div class="ring">
-                </div>
+                <div class="ring"></div>
+                <div class="ring"></div>
             </div>
             <div class="set2">
-                <div class="ring">
-                </div>
-                <div class="ring">
-                </div>
+                <div class="ring"></div>
+                <div class="ring"></div>
             </div>
         </div>
         <div class="box3">
@@ -430,7 +452,7 @@
             <button id="member2">김민선</button>
             <button id="member3">유민아</button>
             <button id="member4">이예진</button>
-            <button class="visit">방명록</button>
+            <button id="visitor">방명록</button>
         </div>
     </div>
 

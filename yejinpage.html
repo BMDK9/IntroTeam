@@ -17,7 +17,11 @@
         }
 
         body {
-            background-color: white;
+            background-image: url(image/yejin/flower.jpg);
+            background-position: center;
+            background-size: contain;
+            background-color: #DEDEDE;
+            background-blend-mode: multiply;
         }
 
         .box0 {
@@ -231,12 +235,24 @@
             location.href = 'index.html';
         })
 
+        $('#sunghun').click(function () {
+            location.href = 'sunghun.html';
+        })
+
+        $('#minsun').click(function () {
+            location.href = 'minsunpage.html';
+        })
+
         $('#minah').click(function () {
             location.href = 'minahpage.html';
         })
 
         $('#yejin').click(function () {
             location.href = 'yejinpage.html';
+        })
+
+        $('#visitor').click(function () {
+            location.href = 'visitorlog.html';
         })
     </script>
 </head>
@@ -334,11 +350,11 @@
             </div>
             <div class="buttons" style="position: absolute;">
                 <button id="index" class="index">홈</button>
-                <button>김성훈</button>
-                <button>김민선</button>
+                <button id="sunghun" class="sunghun">김성훈</button>
+                <button id="minsun" class="minsun">김민선</button>
                 <button id="minah" class="minah">유민아</button>
                 <button id="yejin" class="yejin">이예진</button>
-                <button>방명록</button>
+                <button id="visitor" class="visitor">방명록</button>
             </div>
         </div>
     </div>
