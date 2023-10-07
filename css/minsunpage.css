@@ -28,7 +28,9 @@ body {
     height: 640px;
     background-color: #E0E0E0;
 
-    margin: 100px auto 0px auto;
+    margin: 40px auto 0px auto;
+
+    border-radius: 10px;
 
     padding-top: 45px;
     padding-left: 35px;
