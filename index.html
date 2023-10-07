@@ -36,8 +36,6 @@
         const db = getFirestore(app);
 
 
-
-
         let searchWord = '';
         let dataPackage = await getDocs(collection(db, "goals")); // 데이터 가져오기
 
@@ -144,16 +142,25 @@
 
 
         })
-
     </script>
     <script>
         $(document).ready(async function () {
+<<<<<<< HEAD
 
             if (localStorage.getItem('visitcommentFlag')) {//방명록에 수정이 일어났으면
 
                 localStorage.setItem('visitcommentFlag', false);
 
                 //방명록 불러와봄
+=======
+            //방명록 불러와봄
+            /* let contentvalue = localStorage.getItem('content');
+            let namevalue = localStorage.getItem('name');
+            let temp = `<p>${contentvalue} (${namevalue})</p>`
+
+            $('#visit-comment').append(temp);
+        }); */
+>>>>>>> 19dd8405d71d6cb6dddb4c7e5cd6cb2583659d78
             let content1 = localStorage.getItem('content1');
             let name1 = localStorage.getItem('name1');
             let content2 = localStorage.getItem('content2');
@@ -227,7 +234,7 @@
                 </div>
                 <div class="introduce">
                     <p style="font-size: 14px;">
-                        I 좋은 사람들 I 좋은 세상 <br>
+                        I 좋은 사람들 I 좋은 세상 <br><br>
                         내일배움캠프 <br> 3기 spring b반 3조 <br>
                         <br> I-WORLD 에 오신걸 <br> 환영합니다!
                     </p>

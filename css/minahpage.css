@@ -13,7 +13,7 @@ body {
 .box0 {
     width: 1100px;
     height: 720px;
-    background-color: #E0E0E0;
+    background-color: #002561;
 
     margin: 80px auto 80px auto;
     border-radius: 10px;
@@ -185,6 +185,15 @@ hr {
 
 .my-images>a:not(:nth-of-type(odd)) {
     margin: 80px auto 0px auto;
+}
+
+#btn-pack {
+    width: 100px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 930px;
 }
 
 .buttons {
