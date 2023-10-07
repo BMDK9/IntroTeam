@@ -1,4 +1,3 @@
-
 $('#index').click(function () {
     location.href = 'index.html'
 }) //메인
