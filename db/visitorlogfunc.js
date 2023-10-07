@@ -37,7 +37,6 @@ dbRef.on("value", (snapshot) => {
         </div>
     </div>
     `
-
         $('#logBox').append(temp)
 
     });
@@ -67,39 +66,6 @@ $(document).on("click", "#logPushBtn", function () {
 
     database.ref('logs').push(doc);
 
-    //메인페이지에 보이게 하기 위해 저장
-    // let doc2 = {
-    //     'flag':0
-    // }
-    // await database.ref('flags').push(doc2)
-
-    //3개의 방명록을 메인페이지에 보여주기 위해 키 저장하기
-    // let doc3 = {
-    //     'key1':'',
-    //     'key2':'',
-    //     'key3':''
-    // }
-    // await database.ref('keys').push(doc3);
-
-
-
-    //메인페이지 저장 부분 시작
-    localStorage.setItem('visitcommentFlag', true);//메인페이지에서 db를 업데이트 해야할지 알려줌
-
-    let content1 = localStorage.getItem('content1');
-    let name1 = localStorage.getItem('name1');
-    let content2 = localStorage.getItem('content2');
-    let name2 = localStorage.getItem('name2');
-
-    localStorage.setItem('content2', content1);
-    localStorage.setItem('name2', name1);
-    localStorage.setItem('content3', content2);
-    localStorage.setItem('name3', name2);
-
-    localStorage.setItem('content1', content);
-    localStorage.setItem('name1', name);
-    //메인페이지 저장 부분 끝
-
     window.location.reload();
 });
 //방명록 등록 끝
@@ -108,8 +74,6 @@ $(document).on("click", "#logPushBtn", function () {
 
 //방명록 삭제하는 부분
 $(document).on("click", "#deleteLogBtn", function () {
-
-    //alert("click");
 
     let parentDiv = $(this).closest('div');
     let textDiv = parentDiv.children('.logText');
