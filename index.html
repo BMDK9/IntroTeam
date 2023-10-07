@@ -36,6 +36,8 @@
         const db = getFirestore(app);
 
 
+
+
         let searchWord = '';
         let dataPackage = await getDocs(collection(db, "goals")); // 데이터 가져오기
 
@@ -63,31 +65,6 @@
                 getSearchResult();
             }
         })
-
-        //사이드태그
-        $('#index').click(function () {
-            location.href = 'index.html';
-        }) //메인
-
-        $('#sunghun').click(function () {
-            location.href = 'sunghun.html';
-        }) //성훈
-
-        $('#minsun').click(function () {
-            location.href = 'minsunpage.html';
-        }) //민선
-
-        $('#minah').click(function () {
-            location.href = 'minahpage.html';
-        }) //민아
-
-        $('#yejin').click(function () {
-            location.href = 'yejinpage.html';
-        }) //예진
-
-        $('#visitor').click(function () {
-            location.href = 'visitorlog.html';
-        }) //방명록
 
         async function dataUpdate() {
             let boxes = $("input[type='checkbox']:checked");
@@ -142,25 +119,17 @@
 
 
         })
+
     </script>
     <script>
         $(document).ready(async function () {
-<<<<<<< HEAD
+
 
             if (localStorage.getItem('visitcommentFlag')) {//방명록에 수정이 일어났으면
 
                 localStorage.setItem('visitcommentFlag', false);
 
                 //방명록 불러와봄
-=======
-            //방명록 불러와봄
-            /* let contentvalue = localStorage.getItem('content');
-            let namevalue = localStorage.getItem('name');
-            let temp = `<p>${contentvalue} (${namevalue})</p>`
-
-            $('#visit-comment').append(temp);
-        }); */
->>>>>>> 19dd8405d71d6cb6dddb4c7e5cd6cb2583659d78
             let content1 = localStorage.getItem('content1');
             let name1 = localStorage.getItem('name1');
             let content2 = localStorage.getItem('content2');
@@ -175,22 +144,6 @@
             `
 
             $('#visit-comment').append(temp);
-
-                let key = { // 업데이트할 데이터
-                    '': $(`#main`).is(':checked'),
-                    'personal': $('#personal').is(':checked'),
-                    'search': $(`#search-input`).is(':checked'),
-                    'achievement': $(`#achievement`).is(':checked'),
-                    'visitorBook': $(`#visitorBook`).is(':checked'),
-
-                    'count': checked
-                };
-
-                dataPackage.forEach(async (data) => {
-                    //console.log(data.id, update);
-                    await updateDoc(doc(db, "goals", data.id), update);
-                    window.location.reload();
-                })
 
             }else{//방명록에 수정이 일어나지 않았으면
             
@@ -234,7 +187,7 @@
                 </div>
                 <div class="introduce">
                     <p style="font-size: 14px;">
-                        I 좋은 사람들 I 좋은 세상 <br><br>
+                        I 좋은 사람들 I 좋은 세상 <br>
                         내일배움캠프 <br> 3기 spring b반 3조 <br>
                         <br> I-WORLD 에 오신걸 <br> 환영합니다!
                     </p>
@@ -318,6 +271,7 @@
             </div>
         </div>
     </div>
+    <script src="../IntroTeam/db/buttonfunc.js"></script>
 
 </body>
 
