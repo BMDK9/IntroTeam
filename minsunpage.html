@@ -8,34 +8,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="./css/minsunpage.css">
-=======
-        <link rel="stylesheet" type="text/css" href="./css/minsunpage.css">
-    <script type="module">
 
-        //페이지 이동
-        $("#member1").click(async function () {
-            location.href = 'sunghun.html';
-        });
-        $("#member2").click(async function () {
-            location.href = 'minsunpage.html';
-        });
-        $("#member3").click(async function () {
-            location.href = 'minahpage.html';
-        });
-        $("#member4").click(async function () {
-            location.href = 'yejinpage.html';
-        });
-        $("#home").click(async function () {
-            location.href = 'index.html';
-        });
-        $('#visitor').click(function () {
-            location.href = 'visitorlog.html';
-        });
+    <script src="../IntroTeam/db/minsunpage.js"></script>
 
-    </script>
->>>>>>> 0f3a21c540891616dd14479f43063b9917cbc736
+
 </head>
 
 <body>
@@ -44,23 +21,22 @@
             <p class="text1" style="display:inline">TODAY <span class="red">7</span> | TOTAL 602</p>
             <p class="text2" style="display:inline; font-size: 30px; font-weight: 600;">I-world</p>
             <p class="text3" style="display:inline">참고: https://www.cyworld.com</p>
-            <!-- Example single danger button -->
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    스킨 선택
-                </button>
-                <ul class="dropdown-menu">
-                    ...
-                </ul>
-            </div>
         </div>
         <div class="box2">
             <p class="mood" style="font-size: 15px;">TODAY is 행복💖</p>
             <div class="myimage">
-                <img src="https://cdn.discordapp.com/attachments/1143558612275437669/1159406900845228142/pfp_resized.jpg?ex=6530e8d1&is=651e73d1&hm=7ffb472c8b9a7cd146b7468fa5eebefef1098d76c2c03ed371aa571e8d68361d&"
-                    alt="pfp">
+                <img class="pfp" , src="./image/minsun/pfp.jpg" , alt="pfp">
             </div>
+            <!-- <div class="btn-group" style="text-align: center;">
+                <button class="btn btn-outline btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    스킨 선택
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">고양이</a></li>
+                    <li><a class="dropdown-item" href="#"></a></li>
+                </ul>
+            </div> -->
             <div class="label">
                 <p>&nbsp;이름 : 김민선 </p>
             </div>
@@ -111,46 +87,38 @@
                     <h4 class="title">협업 스타일</h4>
                     <hr>
                     <div class="boxtext">
-                        문제나 일의 진척도에 대해 
+                        문제에 대한 해결 방식이나 아이디어에 대해
                         <br>
-                        소통을 자주 하는 것을 좋아한다.
+                        브레인스토밍을 하는 것을 좋아한다.
                         <br>
-                        여러가지 해결 방식을 시도해보기를 좋아한다.
+                        팀원과 활발히 소통한다. 
                         <br>
                         맡은 일은 포기하지 않고 해낸다.
-                        
+
                     </div>
                 </div>
             </div>
             <div class="box6">
                 <h4 class="title">4장의 사진으로 표현하는 나</h4>
-                <div class='photos'>
-                    <div class='row2'>
-                        <div class="photo">
-                            <!--토마토-->
-                            <img class=photo, width="250px" ,height="250px" ,
-                                src="https://cdn.discordapp.com/attachments/1143558612275437669/1158727480312594452/IMG_8923.webp?ex=651d4c8f&is=651bfb0f&hm=816e8c1747badc52a1093f57c1d9dd8b893844371392c69351357379d5ebe7fa&">
-                        </div>
-                        <div class="photo">
-                            <!--양귀비-->
-                            <img class=photo, width="250px" ,height="250px" ,
-                                src="https://cdn.discordapp.com/attachments/1143558612275437669/1158727797716549673/IMG_8924.jpg?ex=651d4cdb&is=651bfb5b&hm=843783a947969c74a0d06c4d0858c2770772e221d4593a6c7359953add8ec44f&">
-                        </div>
-                    </div>
-                    <div class='row2'>
-                        <div class="photo">
-                            <!--연어-->
-                            <img class=photo, width="250px" ,height="250px"
-                                src="https://cdn.discordapp.com/attachments/1143558612275437669/1158723101614424114/IMG_8911.jpg?ex=651d487b&is=651bf6fb&hm=d8038c25e9778968193cf41bb2772bf6db404d8d41a610e3a5d54cbb6b0835e4&">
-                        </div>
-                        <div class="photo">
-                            <!--Nothing-->
-                            <img class=photo, width="250px" ,height="250px"
-                                src="https://cdn.discordapp.com/attachments/1143558612275437669/1158728561688068116/IMG_8925.jpg?ex=651d4d91&is=651bfc11&hm=81f66c6c53bf3abb1dbd3f2c8d21f1d4ee45d64e06040364675bcc32193c7587&">
-                        </div>
-                    </div>
-                </div>
+                <p> 매일매일 내가 하는 일 </p>
                 <hr>
+                <div class='photos'>
+                    <div class='photorow'>
+                        <!--영어-->
+                        <img class="photo" , src="./image/minsun/book.jpg">
+
+                        <!--책상-->
+                        <img class="photo" , src="./image/minsun/desk.jpg">
+
+                        <!--카페-->
+                        <img class="photo" , src="./image/minsun/cafe.jpg">
+
+                        <!--go for a walk-->
+                        <img class="photo" , src="./image/minsun/walk.jpg">
+
+                    </div>
+              </div>
+               <hr>
             </div>
         </div>
         <div class="buttons" style="position: absolute;">

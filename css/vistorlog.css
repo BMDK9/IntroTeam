@@ -25,7 +25,8 @@ body {
   height: 640px;
   background-color: #E0E0E0;
 
-  margin: 100px auto 0px auto;
+  margin: 40px auto 0px auto;
+  border-radius: 10px;
 
   padding-top: 45px;
   padding-left: 35px;
@@ -33,7 +34,7 @@ body {
 }
 
 .uppertext {
-  width: 800px;
+  width: 930px;
   height: 30px;
   margin-top: -40px;
 }
@@ -72,7 +73,7 @@ body {
 
 .myimage {
   width: 160px;
-  height: 160px;
+  height: 140px;
   background-image: url('../image/logo.jpg');
   background-position: center;
   background-size: cover;
@@ -82,8 +83,13 @@ body {
 
 .introduce {
   width: 160px;
-  height: 25px;
-  margin: 25px auto 0px auto;
+  height: 160px;
+  margin: 0px auto 0px auto;
+
+  border: 2px double;
+  border-radius: 10px;
+
+  padding: 7px;
 }
 
 .rings {
@@ -127,14 +133,14 @@ body {
 }
 
 hr {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .box5 {
   width: 330px;
   height: 120px;
   text-align: left;
-  margin: 20px 20px 0px 20px;
+  margin: 10px 20px 0px 20px;
 }
 
 .box6 {
@@ -142,14 +148,13 @@ hr {
   height: 380px;
   text-align: left;
   margin: 20px 20px 0px 20px;
-  background-color: green;
 }
 
 .box7 {
   width: 660px;
   height: 200px;
   text-align: left;
-  margin: 20px 20px 0px 20px;
+  margin: 0px 20px 0px 20px;
 }
 
 .buttons {
@@ -176,7 +181,7 @@ hr {
 
 .inputlogBox {
   background-color: lightgray;
-  padding: 20px;
+  padding: 20px 20px 10px 20px;
 }
 
 .logBox {
