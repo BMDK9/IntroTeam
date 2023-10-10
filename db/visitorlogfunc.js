@@ -57,7 +57,7 @@ $(document).on("click", "#logPushBtn", function () {
     let year = today.getFullYear();
 
     let date = `${year}-${month}-${day}`;
-    let profiles = ['apeach','con','muzi','neo','prodo','ryan'];
+    let profiles = ['apeach','muzi','neo','prodo','ryan'];
     var random_index = Math.floor(Math.random() * profiles.length);
     var pfp = profiles[random_index]; 
 
