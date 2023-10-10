@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인페이지</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../IntroTeam/db/visitcomments.js"></script>
+    <script src="../IntroTeam/js/visitcomments.js"></script>
 
 
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
@@ -44,33 +44,8 @@
 
 
 
-        let searchWord = '';
+        
         let dataPackage = await getDocs(collection(db, "goals")); // 데이터 가져오기
-
-
-
-
-        async function getSearchResult() { // 검색 결과 보여주는 함수
-            searchWord = $('#search').val();
-
-            if (searchWord == '김성훈')
-                location.href = 'sunghun.html'; // 김성훈님
-            else if (searchWord == '김민선')
-                location.href = 'minsunpage.html'; // 김민선님
-            else if (searchWord == '유민아')
-                location.href = 'minahpage.html'; // 유민아님
-            else if (searchWord == '이예진')
-                location.href = 'yejinpage.html'; // 이예진님
-            else
-                alert(`${searchWord} 에 대한 검색 결과를 찾을 수 없습니다.`);
-        }
-
-        $('#search').keydown(function (e) { // enter 눌렀을 때 검색어 가져와서 전달
-            if (e.keyCode == 13) {
-                e.preventDefault();
-                getSearchResult();
-            }
-        })
 
         async function dataUpdate() {
             let boxes = $("input[type='checkbox']:checked");
@@ -91,7 +66,6 @@
             };
 
             dataPackage.forEach(async (data) => {
-                //console.log(data.id, update);
                 await updateDoc(doc(db, "goals", data.id), update);
                 window.location.reload();
             })
@@ -104,7 +78,6 @@
 
         $(document).ready(async function () { // 목표 관련
             dataPackage.forEach((doc) => {
-                //console.log("Current data: ", doc.data());
                 let goal = doc.data();
 
                 let main = goal['main'];
@@ -122,8 +95,6 @@
 
                 progressbar.style.width = ((count / 5) * 100) + "%";
             });
-
-
         })
 
     </script>
@@ -277,7 +248,8 @@
             </div>
         </div>
     </div>
-    <script src="../IntroTeam/db/buttonfunc.js"></script>
+    <script src="../IntroTeam/js/buttonfunc.js"></script>
+    <script src="../IntroTeam/js/search.js"></script>
 
 </body>
 
