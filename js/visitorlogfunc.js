@@ -89,22 +89,13 @@ $(document).on("click", "#deleteLogBtn", function () {
     let password = pwInput.val();
 
     const dbRef = database.ref('logs');
-
-    dbRef.on("value", (snapshot) => {
-        snapshot.forEach((child) => {
-            const object = child.val();
-
-            if (id == child.ref.key) {
-                if (object.pw == password) {
-                    dbRef.child(id).remove();
-                }
-                else {
-                    alert("잘못된 비밀번호");
-
-                }
-            }
-        });
-    });
+    dbRef.child(id).remove();
+    const object = dbRef.child(id).val();
+    if (object.pw == password) {
+        dbRef.child(id).remove();
+    }else{
+        alert("잘못된 비밀번호");
+    }
     window.location.reload();
 });
 //방명록 삭제 끝남
