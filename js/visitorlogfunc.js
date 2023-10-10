@@ -32,6 +32,7 @@ dbRef.on("value", (snapshot) => {
             <span><input type="text" id="deleteLogPw" placeholder="Password" aria-label="Password" class="form-control"></span>
             <button class="btn btn-secondary" type="button" id="deleteLogBtn">삭제</button>
             <div class="logText" id = ${child.ref.key}>
+            <span><img class="pfp" , src="./image/minsun/pfp/${object.pfp}.png" , alt="pfp"></span>
                 ${object.content}
             </div>
         </div>
@@ -56,12 +57,16 @@ $(document).on("click", "#logPushBtn", function () {
     let year = today.getFullYear();
 
     let date = `${year}-${month}-${day}`;
+    let profiles = ['apeach','muzi','neo','prodo','ryan'];
+    var random_index = Math.floor(Math.random() * profiles.length);
+    var pfp = profiles[random_index]; 
 
     let doc = {
         'name': name,
         'pw': pw,
         'content': content,
-        'date': date
+        'date': date,
+        'pfp': pfp
     }
 
     database.ref('logs').push(doc);

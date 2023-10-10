@@ -26,7 +26,7 @@ $(document).ready(async function () {
 
             const object = child.val();
             let temp = `
-            <p>${object.content} (${object.name})</p>
+            <p><span><img class="pfp" , src="./image/minsun/pfp/${object.pfp}.png" , alt="pfp"></span>${object.content} (${object.name})</p>
             `
 
             $('#visit-comment').append(temp);
