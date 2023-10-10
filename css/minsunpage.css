@@ -222,19 +222,23 @@ hr {
 
 .photo {
 
-    width: 150px;
+    width: 140px;
     height: 110px;
-    overflow: hidden;
-    object-fit: contain;
+    /* object-fit: contain; */
 
     margin-right: 5px;
     margin-bottom: 5px;
 
     border-radius: 20px;
+    flex:1;
+    text-align: center;
+    vertical-align: middle;
 
 }
 .photorow{
     flex-direction: row;
+    display: flex;
+    width:max-content;
 
 }
 
@@ -248,8 +252,6 @@ hr {
     margin-bottom: 5px;
 
     flex:1;
-
-
 }
 
 .buttons>.minsun {
