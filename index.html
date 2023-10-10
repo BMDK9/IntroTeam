@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인페이지</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../IntroTeam/db/visitcomments.js"></script>
+    <script src="../IntroTeam/js/visitcomments.js"></script>
 
 
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
@@ -14,7 +14,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
-
+    
     <link href="./css/index.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -44,33 +44,8 @@
 
 
 
-        let searchWord = '';
+        
         let dataPackage = await getDocs(collection(db, "goals")); // 데이터 가져오기
-
-
-
-
-        async function getSearchResult() { // 검색 결과 보여주는 함수
-            searchWord = $('#search').val();
-
-            if (searchWord == '김성훈')
-                location.href = 'sunghun.html'; // 김성훈님
-            else if (searchWord == '김민선')
-                location.href = 'minsunpage.html'; // 김민선님
-            else if (searchWord == '유민아')
-                location.href = 'minahpage.html'; // 유민아님
-            else if (searchWord == '이예진')
-                location.href = 'yejinpage.html'; // 이예진님
-            else
-                alert(`${searchWord} 에 대한 검색 결과를 찾을 수 없습니다.`);
-        }
-
-        $('#search').keydown(function (e) { // enter 눌렀을 때 검색어 가져와서 전달
-            if (e.keyCode == 13) {
-                e.preventDefault();
-                getSearchResult();
-            }
-        })
 
         async function dataUpdate() {
             let boxes = $("input[type='checkbox']:checked");
@@ -91,7 +66,6 @@
             };
 
             dataPackage.forEach(async (data) => {
-                //console.log(data.id, update);
                 await updateDoc(doc(db, "goals", data.id), update);
                 window.location.reload();
             })
@@ -104,7 +78,6 @@
 
         $(document).ready(async function () { // 목표 관련
             dataPackage.forEach((doc) => {
-                //console.log("Current data: ", doc.data());
                 let goal = doc.data();
 
                 let main = goal['main'];
@@ -122,11 +95,51 @@
 
                 progressbar.style.width = ((count / 5) * 100) + "%";
             });
-
-
         })
 
     </script>
+    <!-- <script>
+        $(document).ready(async function () {
+
+
+            if (localStorage.getItem('visitcommentFlag')) {//방명록에 수정이 일어났으면
+
+                localStorage.setItem('visitcommentFlag', false);
+
+                //방명록 불러와봄
+            let content1 = localStorage.getItem('content1');
+            let name1 = localStorage.getItem('name1');
+            let content2 = localStorage.getItem('content2');
+            let name2 = localStorage.getItem('name2');
+            let content3 = localStorage.getItem('content3');
+            let name3 = localStorage.getItem('name3');
+
+            let temp = `
+            <p>${content1} (${name1})</p>
+            <p>${content2} (${name2})</p>
+            <p>${content3} (${name3})</p>
+            `
+
+            $('#visit-comment').append(temp);
+
+            }else{//방명록에 수정이 일어나지 않았으면
+            
+
+            let temp = `
+            <p>${content1} (${name1})</p>
+            <p>${content2} (${name2})</p>
+            <p>${content3} (${name3})</p>
+            `
+
+            $('#visit-comment').append(temp);
+
+            }
+
+        });
+
+
+    </script> -->
+
 </head>
 
 <body>
@@ -235,7 +248,8 @@
             </div>
         </div>
     </div>
-    <script src="../IntroTeam/db/buttonfunc.js"></script>
+    <script src="../IntroTeam/js/buttonfunc.js"></script>
+    <script src="../IntroTeam/js/search.js"></script>
 
 </body>
 
