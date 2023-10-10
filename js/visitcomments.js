@@ -21,6 +21,7 @@ $(document).ready(async function () {
     //방명록 불러오는 부분//3개 불러오는걸로 수정해야함!!
     const dbRef = database.ref('logs').orderByChild('ups').limitToLast(3);
     dbRef.on("value", (snapshot) => {
+        snapshot.reverse();
         snapshot.forEach((child) => {
 
             const object = child.val();
