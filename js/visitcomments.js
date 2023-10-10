@@ -19,7 +19,7 @@ $(document).ready(async function () {
     const database = firebase.database();
 
     //방명록 불러오는 부분//3개 불러오는걸로 수정해야함!!
-    const dbRef = database.ref('logs').limitToLast(3);
+    const dbRef = database.ref('logs').orderByChild('ups').limitToLast(3);
     dbRef.on("value", (snapshot) => {
         snapshot.forEach((child) => {
 
