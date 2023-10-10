@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Single+Day&display=swap');
+
+* {
+    font-family: 'Pixelify Sans', cursive;
+    font-family: 'Single Day', cursive;
+}
+
+body {
+    background-color: white;
+    background-image: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGEwZndoZXJiM2ppN3dlYW1uMnMwZHR6Y296ajgxaHp4ZDgwdGs2MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wwg1suUiTbCY8H8vIA/giphy.gif');
+    /* background-size: cover; */
+
+}
+
+.box0 {
+  width: 1100px;
+  height: 720px;
+  background-color: #1ac650;
+
+  margin: 80px auto 80px auto;
+  border-radius: 10px;
+
+  display: flex;
+}
+
+.box1 {
+    width: 1000px;
+    height: 640px;
+    background-color: #E0E0E0;
+
+    margin: 40px auto 0px auto;
+
+    border-radius: 10px;
+
+    padding-top: 45px;
+    padding-left: 35px;
+    display: flex;
+
+    border-radius: 20px;
+}
+
+.uppertext {
+    width: 920px;
+    height: 50px;
+    margin-top: -40px;
+}
+
+.uppertext> {
+    height: 20px;
+
+}
+
+.text1 {
+    margin-left: 25px;
+}
+
+.red {
+    color: #D60A0A;
+}
+
+.text2 {
+    margin-left: 60px;
+    color: #2980C9;
+    ;
+}
+
+.text3 {
+    margin-left: 270px;
+}
+
+.box2 {
+    width: 200px;
+    height: 560px;
+    background-color: white;
+    border: 1px solid black;
+    margin-right: 30px;
+}
+
+.mood {
+    width: 160px;
+    height: 25px;
+    margin: 10px auto 0px auto;
+}
+
+.myimage {
+    width: 160px;
+    height: 160px;
+    background-color: aquamarine;
+
+    margin: 0px auto 15px auto;
+    overflow: hidden;
+
+    object-fit: contain;
+
+}
+
+.pfp{
+
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    margin: 0px auto 15px auto;
+    overflow: hidden;
+
+}
+
+.label {
+    width: 155px;
+    height: 25px;
+    background-color: #BEBEBE;
+    color: white;
+
+    border-radius: 20px;
+    margin: 10px auto 0px auto;
+}
+
+.introduce {
+    width: 160px;
+    height: 25px;
+    margin: 25px auto 0px auto;
+}
+
+.rings {
+    margin-left: 190px;
+    margin-top: 40px;
+}
+
+.set1 {
+    margin-bottom: 200px;
+}
+
+.ring {
+    width: 50px;
+    height: 15px;
+    background-color: #BEBEBE;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+.box3 {
+    width: 700px;
+    height: 560px;
+    background-color: white;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.title {
+    color: #2980C9;
+}
+
+.box4 {
+
+    width: 700px;
+    height: 180px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    overflow: hidden;
+}
+
+hr {
+    margin-bottom: 10px;
+}
+
+.box5 {
+    width: 330px;
+    height: 130px;
+    text-align: left;
+    margin: 20px 20px 0px 20px;
+
+}
+
+.boxtext {
+    width: 350px;
+    height: 130px;
+
+}
+
+.box6 {
+    width: 660px;
+    height: 380px;
+    text-align: left;
+    margin: 20px 0px 0px 20px;
+}
+
+.buttons {
+    width: 100px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 930px;
+}
+
+.buttons>button {
+    width: 100px;
+    height: 50px;
+    background-color: #5E5E5E;
+    color: white;
+
+    margin-bottom: 20px;
+
+    border: none;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.photos {
+    width: 700px;
+    height: 300px;
+    display: flex;
+    
+    text-align: center;
+    flex-direction: column;
+
+}
+
+.photo {
+
+    width: 150px;
+    height: 110px;
+    overflow: hidden;
+    object-fit: contain;
+
+    margin-right: 5px;
+    margin-bottom: 5px;
+
+    border-radius: 20px;
+
+}
+.photorow{
+    flex-direction: row;
+
+}
+
+.phototext{
+    width: 150px;
+    height: 110px;
+    overflow: hidden;
+    object-fit: contain;
+
+    margin-right: 5px;
+    margin-bottom: 5px;
+
+    flex:1;
+
+
+}
+
+.buttons>.minsun {
+    background-color: rgb(153, 153, 153);
+}

@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Single+Day&display=swap');
+
+* {
+    font-family: 'Pixelify Sans', cursive;
+    font-family: 'Single Day', cursive;
+}
+
+body {
+    background-image: url('../image/sunghunimg/바탕.jpg');
+}
+
+.box0 {
+    width: 1100px;
+    height: 720px;
+    background-color: #E0E0E0;
+
+    margin: 80px auto 80px auto;
+    border-radius: 10px;
+
+    display: flex;
+}
+
+.box1 {
+    width: 1000px;
+    height: 640px;
+    background-color: #E0E0E0;
+
+    margin: 40px auto 0px auto;
+
+    border-radius: 10px;
+
+    padding-top: 45px;
+    padding-left: 35px;
+    display: flex;
+}
+
+.uppertext {
+    width: 800px;
+    height: 30px;
+    margin-top: -40px;
+}
+
+.text1 {
+    margin-left: 25px;
+}
+
+.red {
+    color: #D60A0A;
+}
+
+.text2 {
+    margin-left: 60px;
+    color: #2980C9;
+    ;
+}
+
+.text3 {
+    margin-left: 270px;
+}
+
+.box2 {
+    width: 200px;
+    height: 560px;
+    background-color: white;
+    border: 1px solid black;
+    margin-right: 30px;
+}
+
+.mood {
+    width: 160px;
+    height: 25px;
+    margin: 10px auto 0px auto;
+}
+
+.myimage {
+    width: 160px;
+    height: 160px;
+    margin: 0px auto 15px auto;
+}
+
+.label {
+    width: 155px;
+    height: 25px;
+    background-color: #BEBEBE;
+    color: white;
+
+    border-radius: 20px;
+    margin: 10px auto 0px auto;
+}
+
+.introduce {
+    width: 160px;
+    height: 25px;
+    margin: 25px auto 0px auto;
+}
+
+.rings {
+    margin-left: 190px;
+    margin-top: 40px;
+}
+
+.set1 {
+    margin-bottom: 200px;
+}
+
+.ring {
+    width: 50px;
+    height: 15px;
+    background-color: #BEBEBE;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+.box3 {
+    width: 700px;
+    height: 560px;
+    background-color: white;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.title {
+    color: #2980C9;
+}
+
+.box4 {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+
+hr {
+    margin-bottom: 10px;
+}
+
+.box5 {
+    width: 330px;
+    height: 130px;
+    text-align: left;
+    margin: 20px 20px 0px 20px;
+}
+
+.box6 {
+    width: 660px;
+    height: 380px;
+    text-align: left;
+    margin: 20px 0px 0px 20px;
+}
+
+img {
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.buttons {
+    width: 100px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 930px;
+}
+
+.buttons>button {
+    width: 100px;
+    height: 50px;
+    background-color: #5E5E5E;
+    color: white;
+
+    margin-bottom: 20px;
+
+    border: none;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.my-blog {
+    color: white;
+    text-decoration: none;
+}
+
+.buttons>.sunghun {
+    background-color: rgb(153, 153, 153);
+}

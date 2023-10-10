@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/visitorlog.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../IntroTeam/db/visitorlogfunc.js"></script>
+
+    
+</head>
+
+<body>
+    <div class="box1" style="position:relative;">
+        <div class="uppertext" style="position: absolute;">
+            <p class="text1" style="display:inline">TODAY <span class="red">2002</span> | TOTAL 118</p>
+            <p class="text2" style="display:inline; font-size: 30px; font-weight: 600;">I-world</p>
+            <p class="text3" style="display:inline">참고: https://www.cyworld.com</p>
+        </div>
+        <div class="box2">
+            <p class="mood" style="font-size: 15px;">TODAY is 행복🎃</p>
+            <div class="myimage">
+
+            </div>
+            <div class="introduce">
+                <p style="font-size: 14px;">
+                    I 좋은 사람들 I 좋은 세상 <br><br>
+                    내일배움캠프 <br> 3기 spring b반 3조 <br>
+                    <br> I-WORLD 에 오신걸 <br> 환영합니다!
+                </p>
+            </div>
+        </div>
+        <div class="rings" style="position: absolute;">
+            <div class="set1">
+                <div class="ring"></div>
+                <div class="ring"></div>
+            </div>
+            <div class="set2">
+                <div class="ring"></div>
+                <div class="ring"></div>
+            </div>
+        </div>
+        <div class="box3">
+            <div class="inputlogBox">
+                <div class="input-group">
+                    <span class="input-group-text">Name</span>
+                    <input type="text" id="logName" placeholder="Name" aria-label="Name" class="form-control">
+                    <span class="input-group-text">Password</span>
+                    <input type="text" id="logPassword" placeholder="Password" aria-label="Password"
+                        class="form-control">
+                </div>
+
+                <textarea class="form-control" id="logContent" rows="3"></textarea>
+
+                <div>
+                    <button type="button" id="logPushBtn" class="btn btn-secondary" style="float:right">등록</button>
+                </div>
+
+            </div>
+            <div class="logBox">
+                <div class="log" id="logBox">
+
+                </div>
+            </div>
+        </div>
+        <div class="buttons" style="position: absolute;">
+            <button id="index" class="index">홈</button>
+                <button id="sunghun" class="sunghun">김성훈</button>
+                <button id="minsun" class="minsun">김민선</button>
+                <button id="minah" class="minah">유민아</button>
+                <button id="yejin" class="yejin">이예진</button>
+                <button id="visitor" class="visitor">방명록</button>
+        </div>
+    </div>
+
+    <script src="../IntroTeam/db/buttonfunc.js"></script>
+</body>
+
+</html>
