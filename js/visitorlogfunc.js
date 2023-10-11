@@ -89,7 +89,6 @@ $(document).on("click", "#deleteLogBtn", function () {
     let password = pwInput.val();
 
     const dbRef = database.ref('logs');
-    dbRef.child(id).remove();
     const object = dbRef.child(id).val();
     if (object.pw == password) {
         dbRef.child(id).remove();
